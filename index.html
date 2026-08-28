@@ -5,164 +5,4006 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Silueta Studio</title>
 <link rel="icon" href="./logo.png" type="image/png" />
+
 <style>
-:root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#24242c;background:#f6f6f8;font-synthesis:none;text-rendering:optimizeLegibility;--purple:#7c3aed;--purple2:#9b6cff;--ink:#26262f;--muted:#777780;--line:#e7e7ec;--panel:#fff}*{box-sizing:border-box}body{margin:0;background:#f6f6f8;color:var(--ink)}button,input{font:inherit}.topbar{height:68px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:20}.brand{display:flex;align-items:center;gap:10px;font-weight:800}.brand-mark{display:grid;place-items:center;width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,#7c3aed,#b06cff);color:#fff}.top-actions{display:flex;gap:14px;align-items:center}.privacy{font-size:11px;color:#777780;display:flex;align-items:center;gap:7px}.privacy-dot{width:7px;height:7px;border-radius:50%;background:#53b788}.btn{border:0;border-radius:9px;padding:10px 16px;font-weight:750;cursor:pointer;transition:.15s}.btn.primary{background:var(--purple);color:#fff;box-shadow:0 5px 14px rgba(124,58,237,.2)}.btn.primary:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}.btn.ghost{background:#f1f1f5;color:#414149}.workspace{max-width:1500px;margin:0 auto;padding:30px 28px 48px}.hero{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:22px}.eyebrow{font-size:11px;font-weight:850;letter-spacing:1.4px;color:var(--purple);margin-bottom:7px}.hero h1{margin:0;max-width:950px;font-size:31px;line-height:1.08;letter-spacing:-1.2px}.hero p{margin:10px 0 0;color:var(--muted);font-size:14px;line-height:1.5;max-width:960px}.steps{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.steps span{font-size:10px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 9px;color:#8c8c95}.steps .active{color:var(--purple);border-color:#ddcff8;background:#faf8ff}.editor-grid{display:grid;grid-template-columns:400px minmax(0,1fr);gap:18px}.panel{background:#fff;border:1px solid var(--line);border-radius:15px;box-shadow:0 7px 24px rgba(25,25,40,.035)}.controls{padding:18px}.panel-section{padding-bottom:18px;margin-bottom:18px;border-bottom:1px solid #efeff2}.panel-section:last-child{padding-bottom:0;margin-bottom:0;border-bottom:0}.section-title{display:flex;gap:10px;align-items:flex-start;margin-bottom:12px}.section-title .num{flex:0 0 25px;height:25px;border-radius:7px;background:#f1eafe;color:var(--purple);display:grid;place-items:center;font-size:12px;font-weight:850}.section-title strong{display:block;font-size:13px}.section-title small{display:block;font-size:10px;color:#898991;line-height:1.35;margin-top:3px}.upload-zone{min-height:112px;border:1px dashed #d4d4dd;border-radius:11px;background:#fafafd;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;text-align:center;padding:16px;transition:.15s}.upload-zone:hover{border-color:#9a78e7;background:#fbf9ff}.upload-zone.secondary{min-height:98px}.upload-zone input{display:none}.upload-icon{font-size:23px;color:var(--purple);line-height:1;margin-bottom:7px}.upload-zone strong{font-size:12px}.upload-zone small{font-size:10px;color:#8c8c94;margin-top:4px}.file-meta{margin-top:8px;background:#f6f6f8;border-radius:9px;padding:8px 10px;display:flex;justify-content:space-between;gap:8px;font-size:10px;white-space:nowrap;overflow:hidden}.file-meta span{overflow:hidden;text-overflow:ellipsis}.file-meta small{color:#83838b;flex:0 0 auto}.range-row{display:grid;grid-template-columns:26px 1fr 50px;align-items:center;gap:8px;color:#76767f;font-size:11px}.range-row input,.independent-size input{width:100%;accent-color:var(--purple);cursor:pointer}.range-row .value{text-align:right;color:var(--purple);font-weight:850}.range-labels{display:flex;justify-content:space-between;color:#a0a0a8;font-size:9px;margin-top:3px}.hint{margin-top:8px;background:#fafafd;border-radius:8px;padding:8px;font-size:10px;color:#85858e;line-height:1.4}.hint b{color:var(--purple)}.segmented{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:4px;background:#f2f2f5;border:1px solid #e9e9ee;border-radius:10px}.seg{border:0;background:transparent;padding:8px 4px;border-radius:7px;font-size:10px;font-weight:800;color:#777780;cursor:pointer}.seg.active{background:#fff;color:var(--purple);box-shadow:0 1px 5px rgba(0,0,0,.07)}.mode-block{margin-top:11px}.independent-size{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}.control-label-row{display:flex;justify-content:space-between;align-items:center;font-size:10px;margin-bottom:6px}.control-label-row strong{color:var(--purple)}.transform-buttons{display:flex;gap:7px;margin-top:10px}.mini-btn{border:1px solid #e0e0e6;background:#fff;border-radius:8px;padding:7px 10px;font-size:10px;font-weight:750;cursor:pointer}.mini-btn.active{background:#f1eafe;border-color:#d9c8ff;color:var(--purple)}.flip-buttons{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:9px}.drag-tip{margin-top:9px;background:#f8f6ff;border-radius:9px;padding:9px;font-size:10px;color:#756d82;line-height:1.4}.drag-tip b{color:#5f42a6}.color-editor{background:#fafafd;border:1px solid #ededf2;border-radius:12px;padding:8px}.color-layout{display:grid;grid-template-columns:176px 1fr;gap:8px;align-items:center}.wheel-wrap{position:relative;width:176px;height:176px}.color-wheel{width:176px;height:176px;display:block;cursor:crosshair}.wheel-handle,.sv-handle{position:absolute;pointer-events:none;width:12px;height:12px;border:2px solid #fff;border-radius:50%;box-shadow:0 0 0 1px rgba(0,0,0,.45);transform:translate(-50%,-50%)}.color-info{display:flex;flex-direction:column;gap:5px;min-width:0}.color-chip{height:26px;border:1px solid rgba(0,0,0,.08);border-radius:7px}.color-input-row{display:grid;grid-template-columns:1fr 58px;gap:5px}.hex-input{height:28px;border:1px solid #dedee5;border-radius:7px;padding:0 6px;background:#fff;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;text-transform:uppercase;width:100%}.hex-apply{height:28px;border:1px solid #dedee5;border-radius:7px;background:#fff;font-size:9px;font-weight:800;cursor:pointer;padding:0}.mini-label{font-size:9px;color:#80808a}.swatches{display:flex;gap:4px;flex-wrap:wrap}.swatch{width:17px;height:17px;border-radius:50%;border:1px solid rgba(0,0,0,.14);cursor:pointer}.preview-panel{min-height:720px;display:flex;flex-direction:column;overflow:hidden}.preview-head{padding:15px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:14px}.preview-head strong{display:block;font-size:13px}.preview-head span{display:block;font-size:10px;color:#898991;margin-top:2px}.preview-actions{display:flex;align-items:center;gap:9px}.drag-status{font-size:10px!important;padding:7px 9px;background:#faf8ff;color:#7458a9;border:1px solid #e9defc;border-radius:8px}.preview-area{flex:1;background:#f4f4f7;display:flex;align-items:flex-start;justify-content:center;padding:22px;position:relative;min-height:620px;overflow:auto}.empty-state{display:flex;flex-direction:column;align-items:center;text-align:center;color:#7d7d86}.empty-icon{width:52px;height:52px;border-radius:15px;background:#fff;display:grid;place-items:center;color:var(--purple);font-size:26px;box-shadow:0 10px 25px rgba(25,25,40,.06);margin-bottom:12px}.empty-state strong{font-size:13px}.empty-state span{font-size:10px;margin-top:4px}.canvas-wrap{width:100%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:start}.preview-card{position:relative;width:100%;background:transparent;border:0;border-radius:0;padding:0;display:flex;flex-direction:column;justify-content:flex-start;align-items:stretch;overflow:visible;box-shadow:none;min-width:0}.preview-card .preview-label{display:flex;justify-content:center;align-items:center;min-height:28px;margin-bottom:8px;border-radius:8px;padding:6px 9px;background:#fff;border:1px solid #e5e5ea;font-size:9px;font-weight:850;letter-spacing:.7px;color:#64646d;box-shadow:0 3px 10px rgba(20,20,30,.04)}.preview-card .preview-label.after{color:var(--purple);border-color:#ddd0f7;background:#faf8ff}.preview-stage{width:100%;min-height:280px;display:flex;align-items:center;justify-content:center;padding:14px;background:#fff;border:1px solid #e5e5ea;border-radius:12px;box-shadow:0 4px 16px rgba(20,20,30,.03);overflow:auto}.preview-card canvas{display:block;width:auto;height:auto;max-width:100%;max-height:min(62vh,560px);border-radius:6px}.preview-card canvas#resultCanvas{cursor:grab;touch-action:none}.preview-card canvas#resultCanvas.dragging{cursor:grabbing}.loading{display:flex;flex-direction:column;align-items:center;gap:8px;color:#707078;font-size:11px}.loading strong{font-size:12px;color:#3a3a40}.spinner{width:34px;height:34px;border:3px solid #e5def4;border-top-color:var(--purple);border-radius:50%;animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}.preview-footer{display:flex;justify-content:space-between;gap:16px;padding:10px 16px;border-top:1px solid var(--line);font-size:10px;color:#888890}.warning{margin-top:8px;background:#fff8e8;border:1px solid #f3e1b6;color:#846a2f;border-radius:9px;padding:9px;font-size:10px;line-height:1.4}.hidden{display:none!important}@media(max-width:1220px){.canvas-wrap{grid-template-columns:1fr 1fr}.preview-card.result-card{grid-column:1/-1}.hero{flex-direction:column;align-items:flex-start}.steps{justify-content:flex-start}}@media(max-width:950px){.editor-grid{grid-template-columns:1fr}.controls{order:2}.preview-panel{order:1}}@media(max-width:680px){.topbar{padding:0 14px}.privacy{display:none}.workspace{padding:20px 12px 30px}.hero h1{font-size:25px}.color-layout{grid-template-columns:1fr}.canvas-wrap{grid-template-columns:1fr}.preview-card.result-card{grid-column:auto}.preview-stage{min-height:240px;padding:10px}.preview-card canvas{max-height:58vh}}
-</style>
-</head>
-<body>
-<header class="topbar">
-<div class="brand">
-  <img src="./logo.png" alt="Logo" style="width: 28px; height: 28px; object-fit: contain;" />
-  <span style="font-family: 'Times New Roman', Times, serif; font-weight: bold; font-style: italic; font-size: 22px;">SILUETA STUDIO</span>
-</div>
-  <div class="top-actions"><span class="privacy"><span class="privacy-dot"></span>Todo se procesa en tu navegador</span><button id="downloadBtn" class="btn primary" disabled>Descargar PNG</button></div>
-</header>
-<main class="workspace">
-  <section class="hero">
-    <div><div class="eyebrow">EDITOR DE SILUETAS</div><h1>Rellena tu PNG</h1><p>La silueta sale directamente de la transparencia de tu PNG. El suavizado redondea la forma sin dejarla borrosa; el relleno se puede mover, hacer zoom y deformar en ancho y alto por separado.</p></div>
-    <div class="steps"><span class="active">01 PNG</span><span>02 Contorno</span><span>03 Relleno</span><span>04 Exportar</span></div>
-  </section>
-  <section class="editor-grid">
-    <aside class="panel controls">
-      <div class="panel-section">
-        <div class="section-title"><span class="num">1</span><div><strong>PNG de la silueta</strong><small>Se respeta el canal alfa original.</small></div></div>
-        <label class="upload-zone" for="baseInput"><input id="baseInput" type="file" accept="image/png,image/webp,image/jpeg,image/*"><span class="upload-icon">＋</span><strong>Subir PNG</strong><small>Ideal: PNG con fondo transparente</small></label>
-        <div id="baseMeta" class="file-meta hidden"></div>
-        <div id="opaqueWarning" class="warning hidden">Esta imagen no tiene transparencia. Para usarla como silueta necesitas una imagen con transparencia real; el editor no añadirá ni quitará fondos automáticamente.</div>
-      </div>
-      <div class="panel-section">
-        <div class="section-title"><span class="num">2</span><div><strong>Redondear / regularizar contorno</strong><small>No es blur: la máscara se suaviza y luego vuelve a quedar nítida.</small></div></div>
-        <div class="range-row"><span>0</span><input id="smoothRange" type="range" min="0" max="500" value="5"><span id="smoothValue" class="value">5</span></div>
-        <div class="range-labels"><span>Original</span><span>Redondeado fuerte</span></div>
-        <div class="hint">Valor inicial: <b>5</b>. A medida que subes, los pequeños picos, esquinas y dientes se simplifican y las curvas se hacen más redondas. <b>No se dibuja ningún contorno extra.</b></div>
-      </div>
-      <div class="panel-section">
-        <div class="section-title"><span class="num">3</span><div><strong>Forma de relleno</strong><small>Elige exactamente cómo quieres pintar la silueta.</small></div></div>
-        <div class="segmented">
-          <button class="seg active" data-mode="original">Original</button><button class="seg" data-mode="color">Color</button><button class="seg" data-mode="image">Imagen</button>
-        </div>
-        <div id="originalMode" class="mode-block"><div class="hint">Conserva los colores originales de la PNG. El único cambio posible es la forma de la máscara si modificas el suavizado.</div></div>
-        <div id="colorMode" class="mode-block hidden">
-          <div class="color-editor"><div class="color-layout"><div class="wheel-wrap"><canvas id="colorWheel" class="color-wheel" width="176" height="176"></canvas><span id="hueHandle" class="wheel-handle"></span><span id="svHandle" class="wheel-handle"></span></div>
-            <div class="color-info"><div class="mini-label">Color actual</div><div id="colorChip" class="color-chip"></div><div class="mini-label">HEX</div><div class="color-input-row"><input id="hexInput" class="hex-input" value="#000000" maxlength="7"><button id="hexApply" class="hex-apply">Aplicar</button></div><div class="mini-label">Grises, blanco, negro y colores rápidos</div><div id="swatches" class="swatches"></div></div>
-          </div></div>
-        </div>
-        <div id="imageMode" class="mode-block hidden">
-          <label class="upload-zone secondary" for="fillInput"><input id="fillInput" type="file" accept="image/*"><span class="upload-icon">＋</span><strong>Subir imagen de relleno</strong><small>Luego puedes moverla y deformarla.</small></label>
-          <div id="fillMeta" class="file-meta hidden"></div>
-          <div id="transformPanel" class="mode-block hidden">
-            <div class="control-label-row"><span>Zoom proporcional</span><strong id="scaleValue">100%</strong></div><div class="range-row"><span>25</span><input id="scaleRange" type="range" min="25" max="300" value="100"><span>300</span></div>
-            <div class="independent-size"><div><div class="control-label-row"><span>Ancho independiente</span><strong id="widthValue">100%</strong></div><input id="widthRange" type="range" min="25" max="300" value="100"></div><div><div class="control-label-row"><span>Alto independiente</span><strong id="heightValue">100%</strong></div><input id="heightRange" type="range" min="25" max="300" value="100"></div></div>
-            <div class="transform-buttons"><button id="centerBtn" class="mini-btn" type="button">Centrar</button><button id="fitBtn" class="mini-btn" type="button">Cubrir</button><button id="resetTransformBtn" class="mini-btn" type="button">Reiniciar</button></div>
-            <div class="flip-buttons"><button id="flipXBtn" class="mini-btn" type="button" aria-pressed="false">↔ Voltear horizontal</button><button id="flipYBtn" class="mini-btn" type="button" aria-pressed="false">↕ Voltear vertical</button></div>
-            <div class="drag-tip">✦ <b>Arrastra</b> el relleno directamente sobre el resultado · <b>rueda del mouse</b> para zoom.</div>
-          </div>
-          <div id="needFillHint" class="hint">Sube una imagen para activar sus controles de posición, zoom, ancho y alto.</div>
-        </div>
-      </div>
-    </aside>
-    <section class="panel preview-panel">
-      <div class="preview-head"><div><strong>Previsualizador</strong><span id="statusText">Sube tu PNG para empezar</span></div><div class="preview-actions"><span id="dragStatus" class="drag-status hidden">Arrastra · rueda = zoom</span><button id="resetBtn" class="btn ghost">Restablecer</button></div></div>
-      <div class="preview-area">
-        <div id="emptyState" class="empty-state">
-          <div class="empty-icon">
-            <img src="./logo.png" alt="Icono" style="width: 36px; height: 36px; object-fit: contain;" />
-          </div>
-          <strong>Tu composición aparecerá aquí</strong>
-          <span>Primero sube la PNG que contiene la silueta.</span>
-        </div>
-        <div id="canvasWrap" class="canvas-wrap hidden"><div class="preview-card"><div class="preview-label">ORIGINAL</div><div class="preview-stage"><canvas id="beforeCanvas"></canvas></div></div><div class="preview-card"><div class="preview-label">MÁSCARA</div><div class="preview-stage"><canvas id="maskCanvas"></canvas></div></div><div class="preview-card result-card"><div class="preview-label after">RESULTADO</div><div class="preview-stage"><canvas id="resultCanvas"></canvas></div></div></div>
-        <div id="loading" class="loading hidden"><div class="spinner"></div><strong id="loadingTitle">Procesando…</strong><span id="progressText">No cierres esta pestaña.</span></div>
-      </div>
-      <div class="preview-footer"><span id="dimensions">—</span><span>PNG · resolución original · transparencia conservada</span></div>
-    </section>
-  </section>
-</main>
-<script>
-(() => {
-  'use strict';
-  const $ = id => document.getElementById(id);
-  const els = {
-    baseInput:$('baseInput'), fillInput:$('fillInput'), smoothRange:$('smoothRange'), smoothValue:$('smoothValue'),
-    beforeCanvas:$('beforeCanvas'), maskCanvas:$('maskCanvas'), resultCanvas:$('resultCanvas'), canvasWrap:$('canvasWrap'), emptyState:$('emptyState'),
-    loading:$('loading'), loadingTitle:$('loadingTitle'), progressText:$('progressText'), statusText:$('statusText'), downloadBtn:$('downloadBtn'), resetBtn:$('resetBtn'),
-    baseMeta:$('baseMeta'), fillMeta:$('fillMeta'), dimensions:$('dimensions'), transformPanel:$('transformPanel'), needFillHint:$('needFillHint'), dragStatus:$('dragStatus'), opaqueWarning:$('opaqueWarning'),
-    scaleRange:$('scaleRange'), scaleValue:$('scaleValue'), widthRange:$('widthRange'), widthValue:$('widthValue'), heightRange:$('heightRange'), heightValue:$('heightValue'), centerBtn:$('centerBtn'), fitBtn:$('fitBtn'), resetTransformBtn:$('resetTransformBtn'), flipXBtn:$('flipXBtn'), flipYBtn:$('flipYBtn'),
-    imageMode:$('imageMode'), colorMode:$('colorMode'), originalMode:$('originalMode'), colorWheel:$('colorWheel'), hueHandle:$('hueHandle'), svHandle:$('svHandle'), colorChip:$('colorChip'), hexInput:$('hexInput'), hexApply:$('hexApply'), swatches:$('swatches')
-  };
-  const state = {
-    baseFile:null, fillFile:null, baseImage:null, fillImage:null, alpha:null, rgba:null, w:0, h:0,
-    smooth:5, mode:'original', fillScale:100, fillWidth:100, fillHeight:100, fillX:0, fillY:0, flipX:false, flipY:false,
-    color:{h:0,s:0,v:0}, raf:0, renderVersion:0, dragging:false, lastPointer:null, wheelPart:null
-  };
+:root{
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:#24242c;
+  background:#f6f6f8;
+  font-synthesis:none;
+  text-rendering:optimizeLegibility;
+  --purple:#7c3aed;
+  --purple2:#9b6cff;
+  --ink:#26262f;
+  --muted:#777780;
+  --line:#e7e7ec;
+  --panel:#fff
+}
 
-  const clamp = (v,a,b) => Math.max(a,Math.min(b,v));
-  const loadImage = src => new Promise((resolve,reject)=>{ const img=new Image(); img.onload=()=>resolve(img); img.onerror=reject; img.src=src; });
-  const fmtBytes = bytes => { if(bytes<1024)return bytes+' B'; let n=bytes/1024; if(n<1024)return n.toFixed(n>=10?0:1)+' KB'; n/=1024; return n.toFixed(n>=10?0:1)+' MB'; };
-  const esc = s => s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  function showMeta(el,file,img){ el.classList.remove('hidden'); el.innerHTML=`<span title="${esc(file.name)}">${esc(file.name)}</span><small>${img.naturalWidth.toLocaleString()} × ${img.naturalHeight.toLocaleString()} px · ${fmtBytes(file.size)}</small>`; }
-  function drawChecker(ctx,w,h){ ctx.fillStyle='#f3f3f6';ctx.fillRect(0,0,w,h);const s=24;ctx.fillStyle='#e7e7ec';for(let y=0;y<h;y+=s)for(let x=0;x<w;x+=s)if((((x/s)+(y/s))&1)===0)ctx.fillRect(x,y,s,s); }
-  function fitCanvas(canvas,w,h){ const scale=Math.min(860/w,510/h,1); canvas.width=w;canvas.height=h;canvas.style.width=Math.max(1,Math.round(w*scale))+'px';canvas.style.height=Math.max(1,Math.round(h*scale))+'px'; }
-  function sourceFromImage(img){ const c=document.createElement('canvas');c.width=img.naturalWidth;c.height=img.naturalHeight;const ctx=c.getContext('2d',{willReadFrequently:true});ctx.drawImage(img,0,0);const d=ctx.getImageData(0,0,c.width,c.height).data;const alpha=new Uint8ClampedArray(c.width*c.height);const rgba=new Uint8ClampedArray(d);let transparent=false;for(let p=0,i=0;p<alpha.length;p++,i+=4){alpha[p]=d[i+3];if(d[i+3]<250)transparent=true;}return{alpha,rgba,transparent}; }
+*{
+  box-sizing:border-box
+}
 
-  // Crisp geometric rounding: blur is used only as a mathematical smoothing pass, then the mask is thresholded again.
-  // The exported edge is not left blurred. Larger values increase the rounding radius, so tiny teeth/details disappear gradually.
-  function smoothMask(source,w,h,amount){
-    if(!source)return null;
-    if(amount<=0)return new Uint8ClampedArray(source);
-    const src=document.createElement('canvas');src.width=w;src.height=h;const sctx=src.getContext('2d');
-    const img=sctx.createImageData(w,h);
-    for(let p=0;p<source.length;p++){const a=source[p]>=128?255:0;const i=p*4;img.data[i]=255;img.data[i+1]=255;img.data[i+2]=255;img.data[i+3]=a;}
-    sctx.putImageData(img,0,0);
-    const out=document.createElement('canvas');out.width=w;out.height=h;const octx=out.getContext('2d',{willReadFrequently:true});
-    const radius=Math.min(28, Math.max(.15, amount * Math.min(w,h) / 10000));
-    octx.filter=`blur(${radius}px)`;octx.drawImage(src,0,0);octx.filter='none';
-    const d=octx.getImageData(0,0,w,h).data; const result=new Uint8ClampedArray(source.length);
-    // Narrow antialias band keeps the edge crisp instead of fuzzy. The actual rounding is supplied by the blur+threshold geometry.
-    for(let p=0,i=0;p<result.length;p++,i+=4){ const v=d[i+3]; result[p]= v<=112?0 : v>=144?255 : Math.round((v-112)*255/32); }
-    return result;
+body{
+  margin:0;
+  background:#f6f6f8;
+  color:var(--ink)
+}
+
+button,input{
+  font:inherit
+}
+
+.topbar{
+  height:68px;
+  background:#fff;
+  border-bottom:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 28px;
+  position:sticky;
+  top:0;
+  z-index:20
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:800
+}
+
+.top-actions{
+  display:flex;
+  gap:14px;
+  align-items:center
+}
+
+.privacy{
+  font-size:11px;
+  color:#777780;
+  display:flex;
+  align-items:center;
+  gap:7px
+}
+
+.privacy-dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#53b788
+}
+
+.btn{
+  border:0;
+  border-radius:9px;
+  padding:10px 16px;
+  font-weight:750;
+  cursor:pointer;
+  transition:.15s
+}
+
+.btn.primary{
+  background:var(--purple);
+  color:#fff;
+  box-shadow:0 5px 14px rgba(124,58,237,.2)
+}
+
+.btn.primary:disabled{
+  opacity:.45;
+  cursor:not-allowed;
+  box-shadow:none
+}
+
+.btn.ghost{
+  background:#f1f1f5;
+  color:#414149
+}
+
+.workspace{
+  max-width:1500px;
+  margin:0 auto;
+  padding:30px 28px 48px
+}
+
+.hero{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:24px;
+  margin-bottom:22px
+}
+
+.eyebrow{
+  font-size:11px;
+  font-weight:850;
+  letter-spacing:1.4px;
+  color:var(--purple);
+  margin-bottom:7px
+}
+
+.hero h1{
+  margin:0;
+  max-width:950px;
+  font-size:31px;
+  line-height:1.08;
+  letter-spacing:-1.2px
+}
+
+.hero p{
+  margin:10px 0 0;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.5;
+  max-width:960px
+}
+
+.steps{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  justify-content:flex-end
+}
+
+.steps span{
+  font-size:10px;
+  border:1px solid var(--line);
+  background:#fff;
+  border-radius:999px;
+  padding:7px 9px;
+  color:#8c8c95
+}
+
+.steps .active{
+  color:var(--purple);
+  border-color:#ddcff8;
+  background:#faf8ff
+}
+
+.editor-grid{
+  display:grid;
+  grid-template-columns:400px minmax(0,1fr);
+  gap:18px;
+  align-items:start
+}
+
+.panel{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:15px;
+  box-shadow:0 7px 24px rgba(25,25,40,.035)
+}
+
+.controls{
+  padding:18px
+}
+
+.panel-section{
+  padding-bottom:18px;
+  margin-bottom:18px;
+  border-bottom:1px solid #efeff2
+}
+
+.panel-section:last-child{
+  padding-bottom:0;
+  margin-bottom:0;
+  border-bottom:0
+}
+
+.section-title{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  margin-bottom:12px
+}
+
+.section-title .num{
+  flex:0 0 25px;
+  height:25px;
+  border-radius:7px;
+  background:#f1eafe;
+  color:var(--purple);
+  display:grid;
+  place-items:center;
+  font-size:12px;
+  font-weight:850
+}
+
+.section-title strong{
+  display:block;
+  font-size:13px
+}
+
+.section-title small{
+  display:block;
+  font-size:10px;
+  color:#898991;
+  line-height:1.35;
+  margin-top:3px
+}
+
+.upload-zone{
+  min-height:112px;
+  border:1px dashed #d4d4dd;
+  border-radius:11px;
+  background:#fafafd;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  text-align:center;
+  padding:16px;
+  transition:.15s
+}
+
+.upload-zone:hover{
+  border-color:#9a78e7;
+  background:#fbf9ff
+}
+
+.upload-zone.secondary{
+  min-height:98px
+}
+
+.upload-zone input{
+  display:none
+}
+
+.upload-icon{
+  font-size:23px;
+  color:var(--purple);
+  line-height:1;
+  margin-bottom:7px
+}
+
+.upload-zone strong{
+  font-size:12px
+}
+
+.upload-zone small{
+  font-size:10px;
+  color:#8c8c94;
+  margin-top:4px
+}
+
+.file-meta{
+  margin-top:8px;
+  background:#f6f6f8;
+  border-radius:99px;
+  padding:8px 10px;
+  display:flex;
+  justify-content:space-between;
+  gap:8px;
+  font-size:10px;
+  white-space:nowrap;
+  overflow:hidden
+}
+
+.file-meta span{
+  overflow:hidden;
+  text-overflow:ellipsis
+}
+
+.file-meta small{
+  color:#83838b;
+  flex:0 0 auto
+}
+
+.range-row{
+  display:grid;
+  grid-template-columns:52px 1fr 52px;
+  align-items:center;
+  gap:8px;
+  color:#76767f;
+  font-size:11px
+}
+
+.range-row input[type="range"]{
+  width:100%;
+  accent-color:var(--purple);
+  cursor:pointer
+}
+
+.range-row .value{
+  text-align:right;
+  color:var(--purple);
+  font-weight:850
+}
+
+.range-labels{
+  display:flex;
+  justify-content:space-between;
+  color:#a0a0a8;
+  font-size:9px;
+  margin-top:3px
+}
+
+.hint{
+  margin-top:8px;
+  background:#fafafd;
+  border-radius:8px;
+  padding:8px;
+  font-size:10px;
+  color:#85858e;
+  line-height:1.4
+}
+
+.hint b{
+  color:var(--purple)
+}
+
+.segmented{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:4px;
+  padding:4px;
+  background:#f2f2f5;
+  border:1px solid #e9e9ee;
+  border-radius:10px
+}
+
+.seg{
+  border:0;
+  background:transparent;
+  padding:8px 4px;
+  border-radius:7px;
+  font-size:10px;
+  font-weight:800;
+  color:#777780;
+  cursor:pointer
+}
+
+.seg.active{
+  background:#fff;
+  color:var(--purple);
+  box-shadow:0 1px 5px rgba(0,0,0,.07)
+}
+
+.mode-block{
+  margin-top:11px
+}
+
+.independent-size{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-top:12px
+}
+
+.control-label-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:10px;
+  margin-bottom:6px
+}
+
+.control-label-row strong{
+  color:var(--purple)
+}
+
+/* NUEVOS INPUTS NUMÉRICOS */
+.manual-control{
+  margin-top:9px
+}
+
+.manual-control label{
+  display:block;
+  font-size:10px;
+  font-weight:700;
+  color:#55555e;
+  margin-bottom:5px
+}
+
+.manual-input{
+  width:100%;
+  height:36px;
+  border:2px solid #d7d0e8;
+  border-radius:8px;
+  background:#fff;
+  padding:0 10px;
+  font-size:13px;
+  font-weight:750;
+  color:#33333b;
+  outline:none;
+  transition:.15s;
+  box-shadow:0 2px 5px rgba(25,25,40,.04)
+}
+
+.manual-input:hover{
+  border-color:#b9a6db
+}
+
+.manual-input:focus{
+  border-color:var(--purple);
+  box-shadow:0 0 0 3px rgba(124,58,237,.12)
+}
+
+.manual-input::placeholder{
+  color:#aaaab2;
+  font-weight:500
+}
+
+/* ROTACIÓN */
+.rotation-section{
+  margin-top:14px;
+  padding-top:12px;
+  border-top:1px solid #efeff2
+}
+
+.rotation-title{
+  font-size:10px;
+  font-weight:800;
+  color:#55555e;
+  margin-bottom:7px
+}
+
+.rotation-slider{
+  display:grid;
+  grid-template-columns:52px 1fr 52px;
+  align-items:center;
+  gap:8px;
+  color:#76767f;
+  font-size:10px
+}
+
+.rotation-slider input[type="range"]{
+  width:100%;
+  accent-color:var(--purple);
+  cursor:pointer
+}
+
+.flip-buttons{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:7px;
+  margin-top:9px
+}
+
+.mini-btn{
+  border:1px solid #e0e0e6;
+  background:#fff;
+  border-radius:8px;
+  padding:7px 10px;
+  font-size:10px;
+  font-weight:750;
+  cursor:pointer
+}
+
+.mini-btn.active{
+  background:#f1eafe;
+  border-color:#d9c8ff;
+  color:var(--purple)
+}
+
+.drag-tip{
+  margin-top:9px;
+  background:#f8f6ff;
+  border-radius:9px;
+  padding:9px;
+  font-size:10px;
+  color:#756d82;
+  line-height:1.4
+}
+
+.drag-tip b{
+  color:#5f42a6
+}
+
+.color-editor{
+  background:#fafafd;
+  border:1px solid #ededf2;
+  border-radius:12px;
+  padding:8px
+}
+
+.color-layout{
+  display:grid;
+  grid-template-columns:176px 1fr;
+  gap:8px;
+  align-items:center
+}
+
+.wheel-wrap{
+  position:relative;
+  width:176px;
+  height:176px
+}
+
+.color-wheel{
+  width:176px;
+  height:176px;
+  display:block;
+  cursor:crosshair
+}
+
+.wheel-handle,
+.sv-handle{
+  position:absolute;
+  pointer-events:none;
+  width:12px;
+  height:12px;
+  border:2px solid #fff;
+  border-radius:50%;
+  box-shadow:0 0 0 1px rgba(0,0,0,.45);
+  transform:translate(-50%,-50%)
+}
+
+.color-info{
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+  min-width:0
+}
+
+.color-chip{
+  height:26px;
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:7px
+}
+
+.color-input-row{
+  display:grid;
+  grid-template-columns:1fr 58px;
+  gap:5px
+}
+
+.hex-input{
+  height:28px;
+  border:1px solid #dedee5;
+  border-radius:7px;
+  padding:0 6px;
+  background:#fff;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:11px;
+  text-transform:uppercase;
+  width:100%
+}
+
+.hex-apply{
+  height:28px;
+  border:1px solid #dedee5;
+  border-radius:7px;
+  background:#fff;
+  font-size:9px;
+  font-weight:800;
+  cursor:pointer;
+  padding:0
+}
+
+.mini-label{
+  font-size:9px;
+  color:#80808a
+}
+
+.swatches{
+  display:flex;
+  gap:4px;
+  flex-wrap:wrap
+}
+
+.swatch{
+  width:17px;
+  height:17px;
+  border-radius:50%;
+  border:1px solid rgba(0,0,0,.14);
+  cursor:pointer
+}
+
+/* PREVISUALIZADOR STICKY */
+.preview-panel{
+  min-height:720px;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+
+  position:sticky;
+  top:88px;
+
+  height:calc(100vh - 108px);
+  max-height:calc(100vh - 108px);
+}
+
+.preview-head{
+  flex:0 0 auto;
+  padding:15px 16px;
+  border-bottom:1px solid var(--line);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:14px
+}
+
+.preview-head strong{
+  display:block;
+  font-size:13px
+}
+
+.preview-head span{
+  display:block;
+  font-size:10px;
+  color:#898991;
+  margin-top:2px
+}
+
+.preview-actions{
+  display:flex;
+  align-items:center;
+  gap:9px
+}
+
+.drag-status{
+  font-size:10px!important;
+  padding:7px 9px;
+  background:#faf8ff;
+  color:#7458a9;
+  border:1px solid #e9defc;
+  border-radius:8px
+}
+
+.preview-area{
+  flex:1;
+  background:#f4f4f7;
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  padding:22px;
+  position:relative;
+  min-height:0;
+  overflow:auto
+}
+
+.empty-state{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  color:#7d7d86;
+  margin:auto
+}
+
+.empty-icon{
+  width:52px;
+  height:52px;
+  border-radius:15px;
+  background:#fff;
+  display:grid;
+  place-items:center;
+  color:var(--purple);
+  font-size:26px;
+  box-shadow:0 10px 25px rgba(25,25,40,.06);
+  margin-bottom:12px
+}
+
+.empty-state strong{
+  font-size:13px
+}
+
+.empty-state span{
+  font-size:10px;
+  margin-top:4px
+}
+
+.canvas-wrap{
+  width:100%;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+  align-items:start
+}
+
+.preview-card{
+  position:relative;
+  width:100%;
+  background:transparent;
+  border:0;
+  border-radius:0;
+  padding:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  align-items:stretch;
+  overflow:visible;
+  box-shadow:none;
+  min-width:0
+}
+
+.preview-card .preview-label{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:28px;
+  margin-bottom:8px;
+  border-radius:8px;
+  padding:6px 9px;
+  background:#fff;
+  border:1px solid #e5e5ea;
+  font-size:9px;
+  font-weight:850;
+  letter-spacing:.7px;
+  color:#64646d;
+  box-shadow:0 3px 10px rgba(20,20,30,.04)
+}
+
+.preview-card .preview-label.after{
+  color:var(--purple);
+  border-color:#ddd0f7;
+  background:#faf8ff
+}
+
+.preview-stage{
+  width:100%;
+  min-height:280px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:14px;
+  background:#fff;
+  border:1px solid #e5e5ea;
+  border-radius:12px;
+  box-shadow:0 4px 16px rgba(20,20,30,.03);
+  overflow:auto
+}
+
+.preview-card canvas{
+  display:block;
+  width:auto;
+  height:auto;
+  max-width:100%;
+  max-height:min(62vh,560px);
+  border-radius:6px
+}
+
+.preview-card canvas#resultCanvas{
+  cursor:grab;
+  touch-action:none
+}
+
+.preview-card canvas#resultCanvas.dragging{
+  cursor:grabbing
+}
+
+.loading{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+  color:#707078;
+  font-size:11px;
+  margin:auto
+}
+
+.loading strong{
+  font-size:12px;
+  color:#3a3a40
+}
+
+.spinner{
+  width:34px;
+  height:34px;
+  border:3px solid #e5def4;
+  border-top-color:var(--purple);
+  border-radius:50%;
+  animation:spin .8s linear infinite
+}
+
+@keyframes spin{
+  to{transform:rotate(360deg)}
+}
+
+.preview-footer{
+  flex:0 0 auto;
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  padding:10px 16px;
+  border-top:1px solid var(--line);
+  font-size:10px;
+  color:#888890
+}
+
+.warning{
+  margin-top:8px;
+  background:#fff8e8;
+  border:1px solid #f3e1b6;
+  color:#846a2f;
+  border-radius:9px;
+  padding:9px;
+  font-size:10px;
+  line-height:1.4
+}
+
+.hidden{
+  display:none!important
+}
+
+@media(max-width:1220px){
+  .canvas-wrap{
+    grid-template-columns:1fr 1fr
   }
 
-  function renderMaskPreview(mask){ const c=els.maskCanvas;fitCanvas(c,state.w,state.h);const ctx=c.getContext('2d');drawChecker(ctx,state.w,state.h);const d=ctx.createImageData(state.w,state.h);for(let p=0;p<mask.length;p++){const i=p*4;d.data[i]=38;d.data[i+1]=38;d.data[i+2]=47;d.data[i+3]=mask[p];}ctx.putImageData(d,0,0); }
-  function renderBefore(){ const c=els.beforeCanvas;fitCanvas(c,state.w,state.h);const ctx=c.getContext('2d');ctx.clearRect(0,0,state.w,state.h);ctx.drawImage(state.baseImage,0,0,state.w,state.h); }
-  function getFillGeometry(){ if(!state.fillImage)return null;const iw=state.fillImage.naturalWidth,ih=state.fillImage.naturalHeight;const cover=Math.max(state.w/iw,state.h/ih);const scale=cover*(state.fillScale/100);const sx=scale*(state.fillWidth/100);const sy=scale*(state.fillHeight/100);const dw=iw*sx,dh=ih*sy;return{x:(state.w-dw)/2+state.fillX,y:(state.h-dh)/2+state.fillY,dw,dh}; }
-  function makeFillLayer(){ const c=document.createElement('canvas');c.width=state.w;c.height=state.h;const ctx=c.getContext('2d');if(state.mode==='original'){ctx.drawImage(state.baseImage,0,0,state.w,state.h);return c;}if(state.mode==='color'){const rgb=hsvToRgb(state.color.h,state.color.s,state.color.v);ctx.fillStyle=`rgb(${rgb.join(',')})`;ctx.fillRect(0,0,state.w,state.h);return c;}if(state.fillImage){const g=getFillGeometry();ctx.save();ctx.translate(g.x+g.dw/2,g.y+g.dh/2);ctx.scale(state.flipX?-1:1,state.flipY?-1:1);ctx.drawImage(state.fillImage,-g.dw/2,-g.dh/2,g.dw,g.dh);ctx.restore();}return c; }
-  function applyMask(layer,mask){ const c=document.createElement('canvas');c.width=state.w;c.height=state.h;const ctx=c.getContext('2d',{willReadFrequently:true});ctx.drawImage(layer,0,0);const d=ctx.getImageData(0,0,state.w,state.h);for(let p=0;p<mask.length;p++){d.data[p*4+3]=Math.min(d.data[p*4+3],mask[p]);}ctx.putImageData(d,0,0);return c; }
-  function renderResult(mask){const c=els.resultCanvas;fitCanvas(c,state.w,state.h);const ctx=c.getContext('2d');drawChecker(ctx,state.w,state.h);ctx.drawImage(applyMask(makeFillLayer(),mask),0,0);}
-  function renderAll(){ if(!state.alpha||!state.baseImage)return;cancelAnimationFrame(state.raf);state.raf=requestAnimationFrame(()=>{const version=++state.renderVersion;const mask=smoothMask(state.alpha,state.w,state.h,state.smooth);if(version!==state.renderVersion)return;renderBefore();renderMaskPreview(mask);renderResult(mask);els.canvasWrap.classList.remove('hidden');els.transformPanel.classList.toggle('hidden',state.mode!=='image'||!state.fillImage);els.needFillHint.classList.toggle('hidden',state.mode!=='image'||!!state.fillImage);els.dragStatus.classList.toggle('hidden',state.mode!=='image'||!state.fillImage);els.statusText.textContent=state.mode==='original'?'Colores originales preservados.':state.mode==='color'?'Silueta pintada con tu color.':(state.fillImage?'Relleno listo. Arrástralo para acomodarlo.':'Sube una imagen de relleno.');els.dimensions.textContent=state.w.toLocaleString()+' × '+state.h.toLocaleString()+' px';els.downloadBtn.disabled=false;}); }
+  .preview-card.result-card{
+    grid-column:1/-1
+  }
 
-  async function handleBase(file){ if(!file)return;state.baseFile=file;els.loading.classList.remove('hidden');els.canvasWrap.classList.add('hidden');els.emptyState.classList.add('hidden');els.loadingTitle.textContent='Leyendo tu PNG…';els.progressText.textContent='Usando directamente su canal alfa.';try{const url=URL.createObjectURL(file);state.baseImage=await loadImage(url);state.w=state.baseImage.naturalWidth;state.h=state.baseImage.naturalHeight;const parsed=sourceFromImage(state.baseImage);state.alpha=parsed.alpha;state.rgba=parsed.rgba;showMeta(els.baseMeta,file,state.baseImage);els.opaqueWarning.classList.toggle('hidden',parsed.transparent);state.fillX=0;state.fillY=0;state.fillScale=100;state.fillWidth=100;state.fillHeight=100;state.flipX=false;state.flipY=false;state.fillImage=null;state.fillFile=null;els.fillMeta.classList.add('hidden');syncTransformUI();els.statusText.textContent=parsed.transparent?'PNG lista. Ajusta el contorno o el modo de relleno.':'La imagen está completamente opaca; se necesita transparencia para usarla como máscara.';renderAll();}catch(err){console.error(err);state.alpha=null;els.statusText.textContent='No se pudo abrir la imagen.';}finally{els.loading.classList.add('hidden');}}
-  function setMode(mode){state.mode=mode;document.querySelectorAll('.seg').forEach(b=>b.classList.toggle('active',b.dataset.mode===mode));els.imageMode.classList.toggle('hidden',mode!=='image');els.colorMode.classList.toggle('hidden',mode!=='color');els.originalMode.classList.toggle('hidden',mode!=='original');renderAll();}
-  function syncTransformUI(){els.scaleRange.value=state.fillScale;els.scaleValue.textContent=Math.round(state.fillScale)+'%';els.widthRange.value=state.fillWidth;els.widthValue.textContent=Math.round(state.fillWidth)+'%';els.heightRange.value=state.fillHeight;els.heightValue.textContent=Math.round(state.fillHeight)+'%';els.flipXBtn.classList.toggle('active',state.flipX);els.flipYBtn.classList.toggle('active',state.flipY);els.flipXBtn.setAttribute('aria-pressed',String(state.flipX));els.flipYBtn.setAttribute('aria-pressed',String(state.flipY));}
-  function resetTransform(){state.fillScale=100;state.fillWidth=100;state.fillHeight=100;state.fillX=0;state.fillY=0;state.flipX=false;state.flipY=false;syncTransformUI();renderAll();}
-  function centerFill(){state.fillX=0;state.fillY=0;renderAll();}
-  function fitFill(){state.fillScale=100;state.fillWidth=100;state.fillHeight=100;state.fillX=0;state.fillY=0;syncTransformUI();renderAll();}
+  .hero{
+    flex-direction:column;
+    align-items:flex-start
+  }
 
-  function hsvToRgb(h,s,v){const c=v*s,x=c*(1-Math.abs((h/60)%2-1)),m=v-c;let r=0,g=0,b=0;if(h<60){r=c;g=x}else if(h<120){r=x;g=c}else if(h<180){g=c;b=x}else if(h<240){g=x;b=c}else if(h<300){r=x;b=c}else{r=c;b=x}return[Math.round((r+m)*255),Math.round((g+m)*255),Math.round((b+m)*255)];}
-  function rgbToHsv(r,g,b){r/=255;g/=255;b/=255;const max=Math.max(r,g,b),min=Math.min(r,g,b),d=max-min;let h=0;if(d){if(max===r)h=60*((g-b)/d%6);else if(max===g)h=60*((b-r)/d+2);else h=60*((r-g)/d+4);if(h<0)h+=360;}return{h,s:max?d/max:0,v:max};}
-  function rgbToHex(rgb){return '#'+rgb.map(v=>v.toString(16).padStart(2,'0')).join('').toUpperCase();}
-  function hexToRgb(hex){const m=/^#?([0-9a-f]{6})$/i.exec(hex.trim());if(!m)return null;const n=parseInt(m[1],16);return[(n>>16)&255,(n>>8)&255,n&255];}
-  function currentHex(){return rgbToHex(hsvToRgb(state.color.h,state.color.s,state.color.v));}
-  function drawColorWheel(){const c=els.colorWheel,ctx=c.getContext('2d'),w=c.width,h=c.height,cx=w/2,cy=h/2;ctx.clearRect(0,0,w,h);const outer=83,inner=66;for(let i=0;i<360;i++){const a0=(i-1)*Math.PI/180,a1=(i+1)*Math.PI/180;ctx.beginPath();ctx.arc(cx,cy,outer,a0,a1);ctx.arc(cx,cy,inner,a1,a0,true);ctx.closePath();ctx.fillStyle=`hsl(${i} 100% 50%)`;ctx.fill();}const r=58,sq=116,x=cx-sq/2,y=cy-sq/2;const hue='hsl('+state.color.h+' 100% 50%)';let g=ctx.createLinearGradient(x,0,x+sq,0);g.addColorStop(0,'#fff');g.addColorStop(1,hue);ctx.fillStyle=g;ctx.fillRect(x,y,sq,sq);g=ctx.createLinearGradient(0,y,0,y+sq);g.addColorStop(0,'rgba(0,0,0,0)');g.addColorStop(1,'#000');ctx.fillStyle=g;ctx.fillRect(x,y,sq,sq);els.colorChip.style.background=currentHex();els.hexInput.value=currentHex();const angle=state.color.h*Math.PI/180;els.hueHandle.style.left=(cx+Math.cos(angle)*74)+'px';els.hueHandle.style.top=(cy+Math.sin(angle)*74)+'px';els.svHandle.style.left=(x+state.color.s*sq)+'px';els.svHandle.style.top=(y+(1-state.color.v)*sq)+'px';}
-  function pickColor(e){const r=els.colorWheel.getBoundingClientRect();const x=(e.clientX-r.left)*(els.colorWheel.width/r.width),y=(e.clientY-r.top)*(els.colorWheel.height/r.height),cx=els.colorWheel.width/2,cy=els.colorWheel.height/2,dx=x-cx,dy=y-cy,d=Math.hypot(dx,dy);if(d>=66&&d<=88){let deg=Math.atan2(dy,dx)*180/Math.PI;if(deg<0)deg+=360;state.color.h=deg;}else if(Math.abs(dx)<=58&&Math.abs(dy)<=58){state.color.s=clamp((dx+58)/116,0,1);state.color.v=clamp(1-(dy+58)/116,0,1);}drawColorWheel();renderAll();}
-  let colorDragging=false;els.colorWheel.addEventListener('pointerdown',e=>{colorDragging=true;els.colorWheel.setPointerCapture(e.pointerId);pickColor(e)});els.colorWheel.addEventListener('pointermove',e=>{if(colorDragging)pickColor(e)});els.colorWheel.addEventListener('pointerup',()=>colorDragging=false);els.colorWheel.addEventListener('pointercancel',()=>colorDragging=false);
-  els.hexApply.addEventListener('click',()=>{const rgb=hexToRgb(els.hexInput.value);if(!rgb){els.hexInput.value=currentHex();return;}state.color=rgbToHsv(...rgb);drawColorWheel();setMode('color');});
-  ['#000000','#222222','#555555','#888888','#BBBBBB','#DDDDDD','#FFFFFF','#FF3B30','#FF9500','#FFCC00','#34C759','#00C7BE','#0A84FF','#5856D6','#AF52DE','#FF2D55','#7C3AED'].forEach(hex=>{const b=document.createElement('button');b.className='swatch';b.type='button';b.title=hex;b.style.background=hex;b.addEventListener('click',()=>{const rgb=hexToRgb(hex);state.color=rgbToHsv(...rgb);drawColorWheel();setMode('color');});els.swatches.appendChild(b);});
+  .steps{
+    justify-content:flex-start
+  }
+}
 
-  document.querySelectorAll('.seg').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.mode)));
-  els.baseInput.addEventListener('change',e=>handleBase(e.target.files[0]));
-  els.fillInput.addEventListener('change',async e=>{const file=e.target.files[0];if(!file)return;try{state.fillFile=file;state.fillImage=await loadImage(URL.createObjectURL(file));state.fillScale=100;state.fillWidth=100;state.fillHeight=100;state.fillX=0;state.fillY=0;state.flipX=false;state.flipY=false;showMeta(els.fillMeta,file,state.fillImage);syncTransformUI();setMode('image');}catch(err){console.error(err);}});
-  els.smoothRange.addEventListener('input',()=>{state.smooth=Number(els.smoothRange.value);els.smoothValue.textContent=state.smooth;renderAll();});
-  els.scaleRange.addEventListener('input',()=>{state.fillScale=Number(els.scaleRange.value);els.scaleValue.textContent=state.fillScale+'%';renderAll();});
-  els.widthRange.addEventListener('input',()=>{state.fillWidth=Number(els.widthRange.value);els.widthValue.textContent=state.fillWidth+'%';renderAll();});
-  els.heightRange.addEventListener('input',()=>{state.fillHeight=Number(els.heightRange.value);els.heightValue.textContent=state.fillHeight+'%';renderAll();});
-  els.centerBtn.addEventListener('click',centerFill);els.fitBtn.addEventListener('click',fitFill);els.resetTransformBtn.addEventListener('click',resetTransform);els.flipXBtn.addEventListener('click',()=>{if(!state.fillImage)return;state.flipX=!state.flipX;syncTransformUI();renderAll();});els.flipYBtn.addEventListener('click',()=>{if(!state.fillImage)return;state.flipY=!state.flipY;syncTransformUI();renderAll();});
-  let drag=false,last={x:0,y:0};els.resultCanvas.addEventListener('pointerdown',e=>{if(state.mode!=='image'||!state.fillImage)return;drag=true;last={x:e.clientX,y:e.clientY};els.resultCanvas.setPointerCapture(e.pointerId);els.resultCanvas.classList.add('dragging')});els.resultCanvas.addEventListener('pointermove',e=>{if(!drag)return;const rect=els.resultCanvas.getBoundingClientRect();state.fillX+=(e.clientX-last.x)*(state.w/rect.width);state.fillY+=(e.clientY-last.y)*(state.h/rect.height);last={x:e.clientX,y:e.clientY};renderAll()});const stop=()=>{drag=false;els.resultCanvas.classList.remove('dragging')};els.resultCanvas.addEventListener('pointerup',stop);els.resultCanvas.addEventListener('pointercancel',stop);els.resultCanvas.addEventListener('wheel',e=>{if(state.mode!=='image'||!state.fillImage)return;e.preventDefault();state.fillScale=clamp(state.fillScale*(e.deltaY<0?1.06:.94),25,300);els.scaleRange.value=Math.round(state.fillScale);els.scaleValue.textContent=Math.round(state.fillScale)+'%';renderAll()},{passive:false});
-  els.downloadBtn.addEventListener('click',()=>{if(!state.alpha)return;els.loading.classList.remove('hidden');els.loadingTitle.textContent='Generando PNG…';els.progressText.textContent='Aplicando máscara a resolución original.';setTimeout(()=>{const mask=smoothMask(state.alpha,state.w,state.h,state.smooth);const out=applyMask(makeFillLayer(),mask);out.toBlob(blob=>{if(!blob){els.loading.classList.add('hidden');return;}const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='silueta-studio.png';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);els.loading.classList.add('hidden');els.statusText.textContent='PNG listo. No se modificaron tus colores fuera de la máscara.';},'image/png');},20);});
-  els.resetBtn.addEventListener('click',()=>location.reload());
-  drawColorWheel();
+@media(max-width:950px){
+  .editor-grid{
+    grid-template-columns:1fr
+  }
+
+  .controls{
+    order:2
+  }
+
+  .preview-panel{
+    order:1;
+
+    position:relative;
+    top:auto;
+    height:auto;
+    max-height:none;
+    min-height:720px
+  }
+}
+
+@media(max-width:680px){
+  .topbar{
+    padding:0 14px
+  }
+
+  .privacy{
+    display:none
+  }
+
+  .workspace{
+    padding:20px 12px 30px
+  }
+
+  .hero h1{
+    font-size:25px
+  }
+
+  .color-layout{
+    grid-template-columns:1fr
+  }
+
+  .canvas-wrap{
+    grid-template-columns:1fr
+  }
+
+  .preview-card.result-card{
+    grid-column:auto
+  }
+
+  .preview-stage{
+    min-height:240px;
+    padding:10px
+  }
+
+  .preview-card canvas{
+    max-height:58vh
+  }
+
+  .independent-size{
+    grid-template-columns:1fr
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+
+  <div class="brand">
+    <img
+      src="./logo.png"
+      alt="Logo"
+      style="width:28px;height:28px;object-fit:contain;"
+    />
+
+    <span
+      style="font-family:'Times New Roman',Times,serif;font-weight:bold;font-style:italic;font-size:22px;"
+    >
+      SILUETA STUDIO
+    </span>
+  </div>
+
+  <div class="top-actions">
+    <span class="privacy">
+      <span class="privacy-dot"></span>
+      Todo se procesa en tu navegador
+    </span>
+
+    <button id="downloadBtn" class="btn primary" disabled>
+      Descargar PNG
+    </button>
+  </div>
+
+</header>
+
+
+<main class="workspace">
+
+  <section class="hero">
+
+    <div>
+      <div class="eyebrow">EDITOR DE SILUETAS</div>
+
+      <h1>Rellena tu PNG</h1>
+
+      <p>
+        La silueta sale directamente de la transparencia de tu PNG.
+        El suavizado redondea la forma sin dejarla borrosa; el relleno
+        se puede mover, hacer zoom, rotar y deformar en ancho y alto
+        por separado.
+      </p>
+    </div>
+
+    <div class="steps">
+      <span class="active">01 PNG</span>
+      <span>02 Contorno</span>
+      <span>03 Relleno</span>
+      <span>04 Exportar</span>
+    </div>
+
+  </section>
+
+
+  <section class="editor-grid">
+
+    <!-- ================= CONTROLES ================= -->
+
+    <aside class="panel controls">
+
+      <!-- PNG -->
+      <div class="panel-section">
+
+        <div class="section-title">
+          <span class="num">1</span>
+
+          <div>
+            <strong>PNG de la silueta</strong>
+            <small>Se respeta el canal alfa original.</small>
+          </div>
+        </div>
+
+        <label class="upload-zone" for="baseInput">
+
+          <input
+            id="baseInput"
+            type="file"
+            accept="image/png,image/webp,image/jpeg,image/*"
+          />
+
+          <span class="upload-icon">＋</span>
+
+          <strong>Subir PNG</strong>
+
+          <small>Ideal: PNG con fondo transparente</small>
+
+        </label>
+
+        <div id="baseMeta" class="file-meta hidden"></div>
+
+        <div id="opaqueWarning" class="warning hidden">
+          Esta imagen no tiene transparencia. Para usarla como silueta
+          necesitas una imagen con transparencia real; el editor no
+          añadirá ni quitará fondos automáticamente.
+        </div>
+
+      </div>
+
+
+      <!-- SUAVIZADO -->
+      <div class="panel-section">
+
+        <div class="section-title">
+          <span class="num">2</span>
+
+          <div>
+            <strong>Redondear / regularizar contorno</strong>
+
+            <small>
+              No es blur: la máscara se suaviza y luego vuelve a quedar nítida.
+            </small>
+          </div>
+        </div>
+
+
+        <div class="range-row">
+
+          <span>0</span>
+
+          <input
+            id="smoothRange"
+            type="range"
+            min="0"
+            max="500"
+            value="5"
+          />
+
+          <span id="smoothValue" class="value">5</span>
+
+        </div>
+
+
+        <div class="range-labels">
+          <span>Original</span>
+          <span>Redondeado fuerte</span>
+        </div>
+
+
+        <!-- INPUT MANUAL DE SUAVIZADO -->
+        <div class="manual-control">
+
+          <label for="smoothInput">
+            Suavizado manual
+          </label>
+
+          <input
+            id="smoothInput"
+            class="manual-input"
+            type="number"
+            min="0"
+            max="500"
+            step="1"
+            value="5"
+          />
+
+        </div>
+
+
+        <div class="hint">
+          Valor inicial: <b>5</b>.
+          A medida que subes, los pequeños picos, esquinas y dientes
+          se simplifican y las curvas se hacen más redondas.
+          <b>No se dibuja ningún contorno extra.</b>
+        </div>
+
+      </div>
+
+
+      <!-- FORMA DE RELLENO -->
+      <div class="panel-section">
+
+        <div class="section-title">
+          <span class="num">3</span>
+
+          <div>
+            <strong>Forma de relleno</strong>
+
+            <small>
+              Elige exactamente cómo quieres pintar la silueta.
+            </small>
+          </div>
+        </div>
+
+
+        <div class="segmented">
+
+          <button class="seg active" data-mode="original">
+            Original
+          </button>
+
+          <button class="seg" data-mode="color">
+            Color
+          </button>
+
+          <button class="seg" data-mode="image">
+            Imagen
+          </button>
+
+        </div>
+
+
+        <!-- ORIGINAL -->
+        <div id="originalMode" class="mode-block">
+
+          <div class="hint">
+            Conserva los colores originales de la PNG.
+            El único cambio posible es la forma de la máscara
+            si modificas el suavizado.
+          </div>
+
+        </div>
+
+
+        <!-- COLOR -->
+        <div id="colorMode" class="mode-block hidden">
+
+          <div class="color-editor">
+
+            <div class="color-layout">
+
+              <div class="wheel-wrap">
+
+                <canvas
+                  id="colorWheel"
+                  class="color-wheel"
+                  width="176"
+                  height="176"
+                ></canvas>
+
+                <span id="hueHandle" class="wheel-handle"></span>
+
+                <span id="svHandle" class="wheel-handle"></span>
+
+              </div>
+
+
+              <div class="color-info">
+
+                <div class="mini-label">
+                  Color actual
+                </div>
+
+                <div id="colorChip" class="color-chip"></div>
+
+                <div class="mini-label">
+                  HEX
+                </div>
+
+                <div class="color-input-row">
+
+                  <input
+                    id="hexInput"
+                    class="hex-input"
+                    value="#000000"
+                    maxlength="7"
+                  />
+
+                  <button
+                    id="hexApply"
+                    class="hex-apply"
+                  >
+                    Aplicar
+                  </button>
+
+                </div>
+
+                <div class="mini-label">
+                  Grises, blanco, negro y colores rápidos
+                </div>
+
+                <div id="swatches" class="swatches"></div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- IMAGEN -->
+        <div id="imageMode" class="mode-block hidden">
+
+          <label class="upload-zone secondary" for="fillInput">
+
+            <input
+              id="fillInput"
+              type="file"
+              accept="image/*"
+            />
+
+            <span class="upload-icon">＋</span>
+
+            <strong>Subir imagen de relleno</strong>
+
+            <small>
+              Luego puedes moverla, rotarla y deformarla.
+            </small>
+
+          </label>
+
+
+          <div id="fillMeta" class="file-meta hidden"></div>
+
+
+          <div id="transformPanel" class="mode-block hidden">
+
+            <!-- ZOOM -->
+            <div class="control-label-row">
+
+              <span>Zoom proporcional</span>
+
+              <strong id="scaleValue">100%</strong>
+
+            </div>
+
+
+            <div class="range-row">
+
+              <span>25</span>
+
+              <input
+                id="scaleRange"
+                type="range"
+                min="25"
+                max="300"
+                value="100"
+              />
+
+              <span>300</span>
+
+            </div>
+
+
+            <!-- ANCHO Y ALTO -->
+            <div class="independent-size">
+
+              <!-- ANCHO -->
+              <div>
+
+                <div class="control-label-row">
+
+                  <span>Ancho independiente</span>
+
+                  <strong id="widthValue">100%</strong>
+
+                </div>
+
+                <input
+                  id="widthRange"
+                  type="range"
+                  min="1"
+                  max="300"
+                  value="100"
+                />
+
+                <div class="manual-control">
+
+                  <label for="widthInput">
+                    Ancho manual (%)
+                  </label>
+
+                  <input
+                    id="widthInput"
+                    class="manual-input"
+                    type="number"
+                    min="-1000"
+                    max="1000"
+                    step="1"
+                    value="100"
+                  />
+
+                </div>
+
+              </div>
+
+
+              <!-- ALTO -->
+              <div>
+
+                <div class="control-label-row">
+
+                  <span>Alto independiente</span>
+
+                  <strong id="heightValue">100%</strong>
+
+                </div>
+
+                <input
+                  id="heightRange"
+                  type="range"
+                  min="1"
+                  max="300"
+                  value="100"
+                />
+
+                <div class="manual-control">
+
+                  <label for="heightInput">
+                    Alto manual (%)
+                  </label>
+
+                  <input
+                    id="heightInput"
+                    class="manual-input"
+                    type="number"
+                    min="-1000"
+                    max="1000"
+                    step="1"
+                    value="100"
+                  />
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <!-- ROTACIÓN -->
+            <div class="rotation-section">
+
+              <div class="rotation-title">
+                Rotación
+              </div>
+
+
+              <div class="rotation-slider">
+
+                <span>-180°</span>
+
+                <input
+                  id="rotateRange"
+                  type="range"
+                  min="-180"
+                  max="180"
+                  value="0"
+                />
+
+                <span>180°</span>
+
+              </div>
+
+
+              <!-- INPUT MANUAL ROTACIÓN -->
+              <div class="manual-control">
+
+                <label for="rotateInput">
+                  Rotación manual (°)
+                </label>
+
+                <input
+                  id="rotateInput"
+                  class="manual-input"
+                  type="number"
+                  min="-3600"
+                  max="3600"
+                  step="1"
+                  value="0"
+                />
+
+              </div>
+
+            </div>
+
+
+            <!-- BOTONES DE POSICIÓN -->
+            <div
+              class="transform-buttons"
+              style="display:flex;gap:7px;margin-top:12px;"
+            >
+
+              <button
+                id="centerBtn"
+                class="mini-btn"
+                type="button"
+              >
+                Centrar
+              </button>
+
+              <button
+                id="fitBtn"
+                class="mini-btn"
+                type="button"
+              >
+                Cubrir
+              </button>
+
+              <button
+                id="resetTransformBtn"
+                class="mini-btn"
+                type="button"
+              >
+                Reiniciar
+              </button>
+
+            </div>
+
+
+            <!-- VOLTEAR -->
+            <div class="flip-buttons">
+
+              <button
+                id="flipXBtn"
+                class="mini-btn"
+                type="button"
+                aria-pressed="false"
+              >
+                ↔ Voltear horizontal
+              </button>
+
+              <button
+                id="flipYBtn"
+                class="mini-btn"
+                type="button"
+                aria-pressed="false"
+              >
+                ↕ Voltear vertical
+              </button>
+
+            </div>
+
+
+            <div class="drag-tip">
+              ✦ <b>Arrastra</b> el relleno directamente sobre el resultado
+              · <b>rueda del mouse</b> para zoom.
+            </div>
+
+          </div>
+
+
+          <div id="needFillHint" class="hint">
+            Sube una imagen para activar sus controles de posición,
+            zoom, rotación, ancho y alto.
+          </div>
+
+        </div>
+
+      </div>
+
+    </aside>
+
+
+    <!-- ================= PREVISUALIZADOR ================= -->
+
+    <section class="panel preview-panel">
+
+      <div class="preview-head">
+
+        <div>
+
+          <strong>
+            Previsualizador
+          </strong>
+
+          <span id="statusText">
+            Sube tu PNG para empezar
+          </span>
+
+        </div>
+
+
+        <div class="preview-actions">
+
+          <span
+            id="dragStatus"
+            class="drag-status hidden"
+          >
+            Arrastra · rueda = zoom
+          </span>
+
+          <button
+            id="resetBtn"
+            class="btn ghost"
+          >
+            Restablecer
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div class="preview-area">
+
+        <div id="emptyState" class="empty-state">
+
+          <div class="empty-icon">
+
+            <img
+              src="./logo.png"
+              alt="Icono"
+              style="width:36px;height:36px;object-fit:contain;"
+            />
+
+          </div>
+
+          <strong>
+            Tu composición aparecerá aquí
+          </strong>
+
+          <span>
+            Primero sube la PNG que contiene la silueta.
+          </span>
+
+        </div>
+
+
+        <div
+          id="canvasWrap"
+          class="canvas-wrap hidden"
+        >
+
+          <div class="preview-card">
+
+            <div class="preview-label">
+              ORIGINAL
+            </div>
+
+            <div class="preview-stage">
+
+              <canvas id="beforeCanvas"></canvas>
+
+            </div>
+
+          </div>
+
+
+          <div class="preview-card">
+
+            <div class="preview-label">
+              MÁSCARA
+            </div>
+
+            <div class="preview-stage">
+
+              <canvas id="maskCanvas"></canvas>
+
+            </div>
+
+          </div>
+
+
+          <div class="preview-card result-card">
+
+            <div class="preview-label after">
+              RESULTADO
+            </div>
+
+            <div class="preview-stage">
+
+              <canvas id="resultCanvas"></canvas>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div id="loading" class="loading hidden">
+
+          <div class="spinner"></div>
+
+          <strong id="loadingTitle">
+            Procesando…
+          </strong>
+
+          <span id="progressText">
+            No cierres esta pestaña.
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <div class="preview-footer">
+
+        <span id="dimensions">
+          —
+        </span>
+
+        <span>
+          PNG · resolución original · transparencia conservada
+        </span>
+
+      </div>
+
+    </section>
+
+  </section>
+
+</main>
+
+
+<script>
+(() => {
+
+'use strict';
+
+
+/* =========================================================
+   ELEMENTOS
+========================================================= */
+
+const $ = id => document.getElementById(id);
+
+const els = {
+
+  baseInput:$('baseInput'),
+  fillInput:$('fillInput'),
+
+  smoothRange:$('smoothRange'),
+  smoothInput:$('smoothInput'),
+  smoothValue:$('smoothValue'),
+
+  beforeCanvas:$('beforeCanvas'),
+  maskCanvas:$('maskCanvas'),
+  resultCanvas:$('resultCanvas'),
+
+  canvasWrap:$('canvasWrap'),
+  emptyState:$('emptyState'),
+
+  loading:$('loading'),
+  loadingTitle:$('loadingTitle'),
+  progressText:$('progressText'),
+
+  statusText:$('statusText'),
+  downloadBtn:$('downloadBtn'),
+  resetBtn:$('resetBtn'),
+
+  baseMeta:$('baseMeta'),
+  fillMeta:$('fillMeta'),
+
+  dimensions:$('dimensions'),
+
+  transformPanel:$('transformPanel'),
+  needFillHint:$('needFillHint'),
+  dragStatus:$('dragStatus'),
+
+  opaqueWarning:$('opaqueWarning'),
+
+  scaleRange:$('scaleRange'),
+  scaleValue:$('scaleValue'),
+
+  widthRange:$('widthRange'),
+  widthValue:$('widthValue'),
+  widthInput:$('widthInput'),
+
+  heightRange:$('heightRange'),
+  heightValue:$('heightValue'),
+  heightInput:$('heightInput'),
+
+  rotateRange:$('rotateRange'),
+  rotateInput:$('rotateInput'),
+
+  centerBtn:$('centerBtn'),
+  fitBtn:$('fitBtn'),
+  resetTransformBtn:$('resetTransformBtn'),
+
+  flipXBtn:$('flipXBtn'),
+  flipYBtn:$('flipYBtn'),
+
+  imageMode:$('imageMode'),
+  colorMode:$('colorMode'),
+  originalMode:$('originalMode'),
+
+  colorWheel:$('colorWheel'),
+  hueHandle:$('hueHandle'),
+  svHandle:$('svHandle'),
+  colorChip:$('colorChip'),
+  hexInput:$('hexInput'),
+  hexApply:$('hexApply'),
+  swatches:$('swatches')
+
+};
+
+
+/* =========================================================
+   ESTADO
+========================================================= */
+
+const state = {
+
+  baseFile:null,
+  fillFile:null,
+
+  baseImage:null,
+  fillImage:null,
+
+  alpha:null,
+  rgba:null,
+
+  w:0,
+  h:0,
+
+  smooth:5,
+
+  mode:'original',
+
+  fillScale:100,
+  fillWidth:100,
+  fillHeight:100,
+  fillRotation:0,
+
+  fillX:0,
+  fillY:0,
+
+  flipX:false,
+  flipY:false,
+
+  color:{
+    h:0,
+    s:0,
+    v:0
+  },
+
+  raf:0,
+  renderVersion:0,
+
+  dragging:false,
+  lastPointer:null
+
+};
+
+
+/* =========================================================
+   UTILIDADES
+========================================================= */
+
+const clamp = (v,a,b) =>
+  Math.max(a,Math.min(b,v));
+
+
+const loadImage = src =>
+  new Promise((resolve,reject)=>{
+
+    const img = new Image();
+
+    img.onload = () => resolve(img);
+
+    img.onerror = reject;
+
+    img.src = src;
+
+  });
+
+
+const fmtBytes = bytes => {
+
+  if(bytes < 1024)
+    return bytes + ' B';
+
+  let n = bytes / 1024;
+
+  if(n < 1024)
+    return n.toFixed(n >= 10 ? 0 : 1) + ' KB';
+
+  n /= 1024;
+
+  return n.toFixed(n >= 10 ? 0 : 1) + ' MB';
+
+};
+
+
+const esc = s =>
+  s.replace(
+    /[&<>"']/g,
+    c => ({
+      '&':'&amp;',
+      '<':'&lt;',
+      '>':'&gt;',
+      '"':'&quot;',
+      "'":'&#39;'
+    }[c])
+  );
+
+
+function showMeta(el,file,img){
+
+  el.classList.remove('hidden');
+
+  el.innerHTML = `
+    <span title="${esc(file.name)}">
+      ${esc(file.name)}
+    </span>
+
+    <small>
+      ${img.naturalWidth.toLocaleString()}
+      ×
+      ${img.naturalHeight.toLocaleString()}
+      px ·
+      ${fmtBytes(file.size)}
+    </small>
+  `;
+
+}
+
+
+function drawChecker(ctx,w,h){
+
+  ctx.fillStyle = '#f3f3f6';
+
+  ctx.fillRect(0,0,w,h);
+
+  const s = 24;
+
+  ctx.fillStyle = '#e7e7ec';
+
+  for(let y=0;y<h;y+=s){
+
+    for(let x=0;x<w;x+=s){
+
+      if(
+        (((x/s)+(y/s))&1) === 0
+      ){
+
+        ctx.fillRect(x,y,s,s);
+
+      }
+
+    }
+
+  }
+
+}
+
+
+function fitCanvas(canvas,w,h){
+
+  const scale =
+    Math.min(
+      860/w,
+      510/h,
+      1
+    );
+
+  canvas.width = w;
+  canvas.height = h;
+
+  canvas.style.width =
+    Math.max(1,Math.round(w*scale)) + 'px';
+
+  canvas.style.height =
+    Math.max(1,Math.round(h*scale)) + 'px';
+
+}
+
+
+/* =========================================================
+   LEER IMAGEN
+========================================================= */
+
+function sourceFromImage(img){
+
+  const c =
+    document.createElement('canvas');
+
+  c.width = img.naturalWidth;
+  c.height = img.naturalHeight;
+
+  const ctx =
+    c.getContext(
+      '2d',
+      {willReadFrequently:true}
+    );
+
+  ctx.drawImage(
+    img,
+    0,
+    0
+  );
+
+  const d =
+    ctx.getImageData(
+      0,
+      0,
+      c.width,
+      c.height
+    ).data;
+
+  const alpha =
+    new Uint8ClampedArray(
+      c.width*c.height
+    );
+
+  const rgba =
+    new Uint8ClampedArray(d);
+
+  let transparent = false;
+
+  for(
+    let p=0,i=0;
+    p<alpha.length;
+    p++,i+=4
+  ){
+
+    alpha[p] = d[i+3];
+
+    if(d[i+3] < 250)
+      transparent = true;
+
+  }
+
+  return {
+    alpha,
+    rgba,
+    transparent
+  };
+
+}
+
+
+/* =========================================================
+   SUAVIZADO
+========================================================= */
+
+function smoothMask(source,w,h,amount){
+
+  if(!source)
+    return null;
+
+  if(amount <= 0)
+    return new Uint8ClampedArray(source);
+
+  const src =
+    document.createElement('canvas');
+
+  src.width = w;
+  src.height = h;
+
+  const sctx =
+    src.getContext('2d');
+
+  const img =
+    sctx.createImageData(w,h);
+
+  for(
+    let p=0;
+    p<source.length;
+    p++
+  ){
+
+    const a =
+      source[p] >= 128
+        ? 255
+        : 0;
+
+    const i = p*4;
+
+    img.data[i] = 255;
+    img.data[i+1] = 255;
+    img.data[i+2] = 255;
+    img.data[i+3] = a;
+
+  }
+
+  sctx.putImageData(
+    img,
+    0,
+    0
+  );
+
+
+  const out =
+    document.createElement('canvas');
+
+  out.width = w;
+  out.height = h;
+
+  const octx =
+    out.getContext(
+      '2d',
+      {willReadFrequently:true}
+    );
+
+
+  const radius =
+    Math.min(
+      28,
+      Math.max(
+        .15,
+        amount * Math.min(w,h) / 10000
+      )
+    );
+
+
+  octx.filter =
+    `blur(${radius}px)`;
+
+  octx.drawImage(
+    src,
+    0,
+    0
+  );
+
+  octx.filter = 'none';
+
+
+  const d =
+    octx.getImageData(
+      0,
+      0,
+      w,
+      h
+    ).data;
+
+
+  const result =
+    new Uint8ClampedArray(
+      source.length
+    );
+
+
+  for(
+    let p=0,i=0;
+    p<result.length;
+    p++,i+=4
+  ){
+
+    const v = d[i+3];
+
+    result[p] =
+      v <= 112
+        ? 0
+        : v >= 144
+          ? 255
+          : Math.round(
+              (v-112)*255/32
+            );
+
+  }
+
+  return result;
+
+}
+
+
+/* =========================================================
+   PREVIEWS
+========================================================= */
+
+function renderMaskPreview(mask){
+
+  const c = els.maskCanvas;
+
+  fitCanvas(
+    c,
+    state.w,
+    state.h
+  );
+
+  const ctx =
+    c.getContext('2d');
+
+  drawChecker(
+    ctx,
+    state.w,
+    state.h
+  );
+
+  const d =
+    ctx.createImageData(
+      state.w,
+      state.h
+    );
+
+  for(
+    let p=0;
+    p<mask.length;
+    p++
+  ){
+
+    const i = p*4;
+
+    d.data[i] = 38;
+    d.data[i+1] = 38;
+    d.data[i+2] = 47;
+    d.data[i+3] = mask[p];
+
+  }
+
+  ctx.putImageData(
+    d,
+    0,
+    0
+  );
+
+}
+
+
+function renderBefore(){
+
+  const c =
+    els.beforeCanvas;
+
+  fitCanvas(
+    c,
+    state.w,
+    state.h
+  );
+
+  const ctx =
+    c.getContext('2d');
+
+  ctx.clearRect(
+    0,
+    0,
+    state.w,
+    state.h
+  );
+
+  ctx.drawImage(
+    state.baseImage,
+    0,
+    0,
+    state.w,
+    state.h
+  );
+
+}
+
+
+/* =========================================================
+   GEOMETRÍA DEL RELLENO
+========================================================= */
+
+function getFillGeometry(){
+
+  if(!state.fillImage)
+    return null;
+
+  const iw =
+    state.fillImage.naturalWidth;
+
+  const ih =
+    state.fillImage.naturalHeight;
+
+
+  const cover =
+    Math.max(
+      state.w/iw,
+      state.h/ih
+    );
+
+
+  const scale =
+    cover *
+    (state.fillScale/100);
+
+
+  /*
+    Se permite ancho y alto negativos.
+
+    Un valor negativo hace que la imagen
+    se invierta en ese eje.
+  */
+
+  const sx =
+    scale *
+    (state.fillWidth/100);
+
+  const sy =
+    scale *
+    (state.fillHeight/100);
+
+
+  const dw =
+    iw * Math.abs(sx);
+
+  const dh =
+    ih * Math.abs(sy);
+
+
+  return {
+
+    x:(state.w-dw)/2 + state.fillX,
+
+    y:(state.h-dh)/2 + state.fillY,
+
+    dw,
+    dh,
+
+    sx,
+    sy
+
+  };
+
+}
+
+
+/* =========================================================
+   CREAR RELLENO
+========================================================= */
+
+function makeFillLayer(){
+
+  const c =
+    document.createElement('canvas');
+
+  c.width = state.w;
+  c.height = state.h;
+
+  const ctx =
+    c.getContext('2d');
+
+
+  /* ORIGINAL */
+
+  if(state.mode === 'original'){
+
+    ctx.drawImage(
+      state.baseImage,
+      0,
+      0,
+      state.w,
+      state.h
+    );
+
+    return c;
+
+  }
+
+
+  /* COLOR */
+
+  if(state.mode === 'color'){
+
+    const rgb =
+      hsvToRgb(
+        state.color.h,
+        state.color.s,
+        state.color.v
+      );
+
+    ctx.fillStyle =
+      `rgb(${rgb.join(',')})`;
+
+    ctx.fillRect(
+      0,
+      0,
+      state.w,
+      state.h
+    );
+
+    return c;
+
+  }
+
+
+  /* IMAGEN */
+
+  if(state.fillImage){
+
+    const g =
+      getFillGeometry();
+
+
+    ctx.save();
+
+
+    ctx.translate(
+      g.x + g.dw/2,
+      g.y + g.dh/2
+    );
+
+
+    ctx.rotate(
+      (state.fillRotation || 0)
+      * Math.PI/180
+    );
+
+
+    /*
+      Volteo independiente mediante
+      transformaciones.
+    */
+
+    const scaleX =
+      (g.sx < 0 ? -1 : 1) *
+      (state.flipX ? -1 : 1);
+
+    const scaleY =
+      (g.sy < 0 ? -1 : 1) *
+      (state.flipY ? -1 : 1);
+
+
+    ctx.scale(
+      scaleX,
+      scaleY
+    );
+
+
+    ctx.drawImage(
+      state.fillImage,
+      -g.dw/2,
+      -g.dh/2,
+      g.dw,
+      g.dh
+    );
+
+
+    ctx.restore();
+
+  }
+
+
+  return c;
+
+}
+
+
+/* =========================================================
+   APLICAR MÁSCARA
+========================================================= */
+
+function applyMask(layer,mask){
+
+  const c =
+    document.createElement('canvas');
+
+  c.width = state.w;
+  c.height = state.h;
+
+  const ctx =
+    c.getContext(
+      '2d',
+      {willReadFrequently:true}
+    );
+
+
+  ctx.drawImage(
+    layer,
+    0,
+    0
+  );
+
+
+  const d =
+    ctx.getImageData(
+      0,
+      0,
+      state.w,
+      state.h
+    );
+
+
+  for(
+    let p=0;
+    p<mask.length;
+    p++
+  ){
+
+    d.data[p*4+3] =
+      Math.min(
+        d.data[p*4+3],
+        mask[p]
+      );
+
+  }
+
+
+  ctx.putImageData(
+    d,
+    0,
+    0
+  );
+
+
+  return c;
+
+}
+
+
+/* =========================================================
+   RESULTADO
+========================================================= */
+
+function renderResult(mask){
+
+  const c =
+    els.resultCanvas;
+
+  fitCanvas(
+    c,
+    state.w,
+    state.h
+  );
+
+
+  const ctx =
+    c.getContext('2d');
+
+
+  drawChecker(
+    ctx,
+    state.w,
+    state.h
+  );
+
+
+  ctx.drawImage(
+    applyMask(
+      makeFillLayer(),
+      mask
+    ),
+    0,
+    0
+  );
+
+}
+
+
+/* =========================================================
+   RENDER GENERAL
+========================================================= */
+
+function renderAll(){
+
+  if(!state.alpha || !state.baseImage)
+    return;
+
+
+  cancelAnimationFrame(
+    state.raf
+  );
+
+
+  state.raf =
+    requestAnimationFrame(() => {
+
+      const version =
+        ++state.renderVersion;
+
+
+      const mask =
+        smoothMask(
+          state.alpha,
+          state.w,
+          state.h,
+          state.smooth
+        );
+
+
+      if(
+        version !==
+        state.renderVersion
+      )
+        return;
+
+
+      renderBefore();
+
+      renderMaskPreview(mask);
+
+      renderResult(mask);
+
+
+      els.canvasWrap
+        .classList
+        .remove('hidden');
+
+
+      els.transformPanel
+        .classList
+        .toggle(
+          'hidden',
+          state.mode !== 'image' ||
+          !state.fillImage
+        );
+
+
+      els.needFillHint
+        .classList
+        .toggle(
+          'hidden',
+          state.mode !== 'image' ||
+          !!state.fillImage
+        );
+
+
+      els.dragStatus
+        .classList
+        .toggle(
+          'hidden',
+          state.mode !== 'image' ||
+          !state.fillImage
+        );
+
+
+      els.statusText.textContent =
+        state.mode === 'original'
+          ? 'Colores originales preservados.'
+          : state.mode === 'color'
+            ? 'Silueta pintada con tu color.'
+            : (
+                state.fillImage
+                  ? 'Relleno listo. Arrástralo para acomodarlo.'
+                  : 'Sube una imagen de relleno.'
+              );
+
+
+      els.dimensions.textContent =
+        state.w.toLocaleString() +
+        ' × ' +
+        state.h.toLocaleString() +
+        ' px';
+
+
+      els.downloadBtn.disabled = false;
+
+    });
+
+}
+
+
+/* =========================================================
+   UI DE TRANSFORMACIONES
+========================================================= */
+
+function syncTransformUI(){
+
+  els.scaleRange.value =
+    state.fillScale;
+
+  els.scaleValue.textContent =
+    Math.round(state.fillScale) + '%';
+
+
+  els.widthRange.value =
+    clamp(
+      Math.abs(state.fillWidth),
+      1,
+      300
+    );
+
+  els.widthValue.textContent =
+    Math.round(state.fillWidth) + '%';
+
+  els.widthInput.value =
+    Math.round(state.fillWidth);
+
+
+  els.heightRange.value =
+    clamp(
+      Math.abs(state.fillHeight),
+      1,
+      300
+    );
+
+  els.heightValue.textContent =
+    Math.round(state.fillHeight) + '%';
+
+  els.heightInput.value =
+    Math.round(state.fillHeight);
+
+
+  els.rotateRange.value =
+    clamp(
+      state.fillRotation,
+      -180,
+      180
+    );
+
+  els.rotateInput.value =
+    Math.round(state.fillRotation);
+
+
+  els.flipXBtn.classList.toggle(
+    'active',
+    state.flipX
+  );
+
+  els.flipYBtn.classList.toggle(
+    'active',
+    state.flipY
+  );
+
+
+  els.flipXBtn.setAttribute(
+    'aria-pressed',
+    String(state.flipX)
+  );
+
+  els.flipYBtn.setAttribute(
+    'aria-pressed',
+    String(state.flipY)
+  );
+
+}
+
+
+/* =========================================================
+   RESET TRANSFORM
+========================================================= */
+
+function resetTransform(){
+
+  state.fillScale = 100;
+
+  state.fillWidth = 100;
+
+  state.fillHeight = 100;
+
+  state.fillRotation = 0;
+
+  state.fillX = 0;
+
+  state.fillY = 0;
+
+  state.flipX = false;
+
+  state.flipY = false;
+
+
   syncTransformUI();
+
+  renderAll();
+
+}
+
+
+/* =========================================================
+   CAMBIO DE MODO
+========================================================= */
+
+function setMode(mode){
+
+  state.mode = mode;
+
+
+  document
+    .querySelectorAll('.seg')
+    .forEach(b => {
+
+      b.classList.toggle(
+        'active',
+        b.dataset.mode === mode
+      );
+
+    });
+
+
+  els.imageMode
+    .classList
+    .toggle(
+      'hidden',
+      mode !== 'image'
+    );
+
+
+  els.colorMode
+    .classList
+    .toggle(
+      'hidden',
+      mode !== 'color'
+    );
+
+
+  els.originalMode
+    .classList
+    .toggle(
+      'hidden',
+      mode !== 'original'
+    );
+
+
+  renderAll();
+
+}
+
+
+/* =========================================================
+   CARGAR PNG BASE
+========================================================= */
+
+async function handleBase(file){
+
+  if(!file)
+    return;
+
+
+  state.baseFile = file;
+
+
+  els.loading
+    .classList
+    .remove('hidden');
+
+
+  els.canvasWrap
+    .classList
+    .add('hidden');
+
+
+  els.emptyState
+    .classList
+    .add('hidden');
+
+
+  els.loadingTitle.textContent =
+    'Leyendo tu PNG…';
+
+
+  els.progressText.textContent =
+    'Usando directamente su canal alfa.';
+
+
+  try{
+
+    const url =
+      URL.createObjectURL(file);
+
+
+    state.baseImage =
+      await loadImage(url);
+
+
+    state.w =
+      state.baseImage.naturalWidth;
+
+
+    state.h =
+      state.baseImage.naturalHeight;
+
+
+    const parsed =
+      sourceFromImage(
+        state.baseImage
+      );
+
+
+    state.alpha =
+      parsed.alpha;
+
+
+    state.rgba =
+      parsed.rgba;
+
+
+    showMeta(
+      els.baseMeta,
+      file,
+      state.baseImage
+    );
+
+
+    els.opaqueWarning
+      .classList
+      .toggle(
+        'hidden',
+        parsed.transparent
+      );
+
+
+    state.fillX = 0;
+    state.fillY = 0;
+
+    state.fillScale = 100;
+    state.fillWidth = 100;
+    state.fillHeight = 100;
+
+    state.fillRotation = 0;
+
+    state.flipX = false;
+    state.flipY = false;
+
+    state.fillImage = null;
+    state.fillFile = null;
+
+
+    els.fillMeta
+      .classList
+      .add('hidden');
+
+
+    syncTransformUI();
+
+
+    els.statusText.textContent =
+      parsed.transparent
+        ? 'PNG lista. Ajusta el contorno o el modo de relleno.'
+        : 'La imagen está completamente opaca; se necesita transparencia para usarla como máscara.';
+
+
+    renderAll();
+
+  }
+  catch(err){
+
+    console.error(err);
+
+    state.alpha = null;
+
+    els.statusText.textContent =
+      'No se pudo abrir la imagen.';
+
+  }
+  finally{
+
+    els.loading
+      .classList
+      .add('hidden');
+
+  }
+
+}
+
+
+/* =========================================================
+   CARGAR RELLENO
+========================================================= */
+
+async function handleFill(file){
+
+  if(!file)
+    return;
+
+
+  try{
+
+    const url =
+      URL.createObjectURL(file);
+
+
+    state.fillImage =
+      await loadImage(url);
+
+
+    state.fillFile = file;
+
+
+    showMeta(
+      els.fillMeta,
+      file,
+      state.fillImage
+    );
+
+
+    resetTransform();
+
+  }
+  catch(e){
+
+    console.error(e);
+
+  }
+
+}
+
+
+/* =========================================================
+   COLOR
+========================================================= */
+
+function hsvToRgb(h,s,v){
+
+  const c = v*s;
+
+  const x =
+    c *
+    (
+      1 -
+      Math.abs(
+        (h/60)%2 - 1
+      )
+    );
+
+  const m = v-c;
+
+  let r=0;
+  let g=0;
+  let b=0;
+
+
+  if(h<60){
+
+    r=c;
+    g=x;
+
+  }
+  else if(h<120){
+
+    r=x;
+    g=c;
+
+  }
+  else if(h<180){
+
+    g=c;
+    b=x;
+
+  }
+  else if(h<240){
+
+    g=x;
+    b=c;
+
+  }
+  else if(h<300){
+
+    r=x;
+    b=c;
+
+  }
+  else{
+
+    r=c;
+    b=x;
+
+  }
+
+
+  return [
+
+    Math.round((r+m)*255),
+
+    Math.round((g+m)*255),
+
+    Math.round((b+m)*255)
+
+  ];
+
+}
+
+
+function rgbToHsv(r,g,b){
+
+  r/=255;
+  g/=255;
+  b/=255;
+
+
+  const max =
+    Math.max(r,g,b);
+
+  const min =
+    Math.min(r,g,b);
+
+  const d =
+    max-min;
+
+
+  let h=0;
+
+
+  if(d){
+
+    if(max===r)
+      h=60*((g-b)/d%6);
+
+    else if(max===g)
+      h=60*((b-r)/d+2);
+
+    else
+      h=60*((r-g)/d+4);
+
+
+    if(h<0)
+      h+=360;
+
+  }
+
+
+  return {
+
+    h,
+
+    s:max ? d/max : 0,
+
+    v:max
+
+  };
+
+}
+
+
+function rgbToHex(rgb){
+
+  return '#' +
+    rgb
+      .map(
+        v =>
+          v
+            .toString(16)
+            .padStart(2,'0')
+      )
+      .join('')
+      .toUpperCase();
+
+}
+
+
+function hexToRgb(hex){
+
+  const m =
+    /^#?([0-9a-f]{6})$/i
+      .exec(hex.trim());
+
+
+  if(!m)
+    return null;
+
+
+  const n =
+    parseInt(
+      m[1],
+      16
+    );
+
+
+  return [
+
+    (n>>16)&255,
+
+    (n>>8)&255,
+
+    n&255
+
+  ];
+
+}
+
+
+function currentHex(){
+
+  return rgbToHex(
+    hsvToRgb(
+      state.color.h,
+      state.color.s,
+      state.color.v
+    )
+  );
+
+}
+
+
+/* =========================================================
+   RUEDA DE COLOR
+========================================================= */
+
+function drawColorWheel(){
+
+  const c =
+    els.colorWheel;
+
+  const ctx =
+    c.getContext('2d');
+
+
+  const w = c.width;
+  const h = c.height;
+
+  const cx = w/2;
+  const cy = h/2;
+
+
+  ctx.clearRect(
+    0,
+    0,
+    w,
+    h
+  );
+
+
+  const outer=83;
+  const inner=66;
+
+
+  for(
+    let i=0;
+    i<360;
+    i++
+  ){
+
+    const a0 =
+      (i-1)*Math.PI/180;
+
+    const a1 =
+      (i+1)*Math.PI/180;
+
+
+    ctx.beginPath();
+
+    ctx.arc(
+      cx,
+      cy,
+      outer,
+      a0,
+      a1
+    );
+
+    ctx.arc(
+      cx,
+      cy,
+      inner,
+      a1,
+      a0,
+      true
+    );
+
+    ctx.closePath();
+
+
+    ctx.fillStyle =
+      `hsl(${i} 100% 50%)`;
+
+    ctx.fill();
+
+  }
+
+
+  const sq=116;
+
+  const x =
+    cx-sq/2;
+
+  const y =
+    cy-sq/2;
+
+
+  const hue =
+    `hsl(${state.color.h} 100% 50%)`;
+
+
+  let g =
+    ctx.createLinearGradient(
+      x,
+      0,
+      x+sq,
+      0
+    );
+
+
+  g.addColorStop(
+    0,
+    '#fff'
+  );
+
+  g.addColorStop(
+    1,
+    hue
+  );
+
+
+  ctx.fillStyle = g;
+
+  ctx.fillRect(
+    x,
+    y,
+    sq,
+    sq
+  );
+
+
+  g =
+    ctx.createLinearGradient(
+      0,
+      y,
+      0,
+      y+sq
+    );
+
+
+  g.addColorStop(
+    0,
+    'rgba(0,0,0,0)'
+  );
+
+  g.addColorStop(
+    1,
+    '#000'
+  );
+
+
+  ctx.fillStyle = g;
+
+  ctx.fillRect(
+    x,
+    y,
+    sq,
+    sq
+  );
+
+
+  els.colorChip.style.background =
+    currentHex();
+
+
+  els.hexInput.value =
+    currentHex();
+
+
+  const angle =
+    state.color.h *
+    Math.PI/180;
+
+
+  els.hueHandle.style.left =
+    (cx+Math.cos(angle)*74)+'px';
+
+
+  els.hueHandle.style.top =
+    (cy+Math.sin(angle)*74)+'px';
+
+
+  els.svHandle.style.left =
+    (x+state.color.s*sq)+'px';
+
+
+  els.svHandle.style.top =
+    (y+(1-state.color.v)*sq)+'px';
+
+}
+
+
+/* =========================================================
+   SWATCHES
+========================================================= */
+
+const swatchesColors = [
+
+  '#000000',
+  '#222222',
+  '#555555',
+  '#888888',
+  '#BBBBBB',
+  '#DDDDDD',
+  '#FFFFFF',
+
+  '#FF3B30',
+  '#FF9500',
+  '#FFCC00',
+  '#34C759',
+  '#00C7BE',
+  '#30B0C7',
+  '#007AFF',
+  '#5856D6',
+  '#AF52DE'
+
+];
+
+
+swatchesColors.forEach(hex => {
+
+  const sw =
+    document.createElement('button');
+
+
+  sw.className =
+    'swatch';
+
+
+  sw.style.background =
+    hex;
+
+
+  sw.type = 'button';
+
+
+  sw.addEventListener(
+    'click',
+    () => {
+
+      const rgb =
+        hexToRgb(hex);
+
+
+      if(rgb){
+
+        state.color =
+          rgbToHsv(...rgb);
+
+
+        drawColorWheel();
+
+        setMode('color');
+
+      }
+
+    }
+  );
+
+
+  els.swatches.appendChild(sw);
+
+});
+
+
+/* =========================================================
+   EVENTOS ARCHIVOS
+========================================================= */
+
+els.baseInput.addEventListener(
+  'change',
+  e =>
+    handleBase(
+      e.target.files[0]
+    )
+);
+
+
+els.fillInput.addEventListener(
+  'change',
+  e =>
+    handleFill(
+      e.target.files[0]
+    )
+);
+
+
+/* =========================================================
+   SUAVIZADO
+========================================================= */
+
+els.smoothRange.addEventListener(
+  'input',
+  e => {
+
+    const value =
+      parseFloat(e.target.value);
+
+
+    state.smooth =
+      clamp(
+        value,
+        0,
+        500
+      );
+
+
+    els.smoothValue.textContent =
+      state.smooth;
+
+
+    els.smoothInput.value =
+      state.smooth;
+
+
+    renderAll();
+
+  }
+);
+
+
+els.smoothInput.addEventListener(
+  'input',
+  e => {
+
+    let value =
+      parseFloat(e.target.value);
+
+
+    if(Number.isNaN(value))
+      return;
+
+
+    value =
+      clamp(
+        value,
+        0,
+        500
+      );
+
+
+    state.smooth = value;
+
+
+    els.smoothRange.value =
+      value;
+
+
+    els.smoothValue.textContent =
+      value;
+
+
+    renderAll();
+
+  }
+);
+
+
+els.smoothInput.addEventListener(
+  'change',
+  e => {
+
+    let value =
+      parseFloat(e.target.value);
+
+
+    if(Number.isNaN(value))
+      value=0;
+
+
+    value =
+      clamp(
+        value,
+        0,
+        500
+      );
+
+
+    state.smooth = value;
+
+    els.smoothInput.value = value;
+    els.smoothRange.value = value;
+    els.smoothValue.textContent = value;
+
+    renderAll();
+
+  }
+);
+
+
+/* =========================================================
+   ZOOM
+========================================================= */
+
+els.scaleRange.addEventListener(
+  'input',
+  e => {
+
+    state.fillScale =
+      parseFloat(e.target.value);
+
+    syncTransformUI();
+
+    renderAll();
+
+  }
+);
+
+
+/* =========================================================
+   ANCHO - SLIDER
+========================================================= */
+
+els.widthRange.addEventListener(
+  'input',
+  e => {
+
+    const sliderValue =
+      parseFloat(e.target.value);
+
+
+    /*
+      El slider representa el valor
+      absoluto del ancho.
+    */
+
+    state.fillWidth =
+      state.fillWidth < 0
+        ? -sliderValue
+        : sliderValue;
+
+
+    syncTransformUI();
+
+    renderAll();
+
+  }
+);
+
+
+/* =========================================================
+   ANCHO - INPUT MANUAL
+========================================================= */
+
+els.widthInput.addEventListener(
+  'input',
+  e => {
+
+    let value =
+      parseFloat(e.target.value);
+
+
+    if(Number.isNaN(value))
+      return;
+
+
+    state.fillWidth = value;
+
+
+    els.widthValue.textContent =
+      Math.round(value) + '%';
+
+
+    els.widthRange.value =
+      clamp(
+        Math.abs(value),
+        1,
+        300
+      );
+
+
+    renderAll();
+
+  }
+);
+
+
+/* =========================================================
+   ALTO - SLIDER
+========================================================= */
+
+els.heightRange.addEventListener(
+  'input',
+  e => {
+
+    const sliderValue =
+      parseFloat(e.target.value);
+
+
+    state.fillHeight =
+      state.fillHeight < 0
+        ? -sliderValue
+        : sliderValue;
+
+
+    syncTransformUI();
+
+    renderAll();
+
+  }
+);
+
+
+/* =========================================================
+   ALTO - INPUT MANUAL
+========================================================= */
+
+els.heightInput.addEventListener(
+  'input',
+  e => {
+
+    let value =
+      parseFloat(e.target.value);
+
+
+    if(Number.isNaN(value))
+      return;
+
+
+    state.fillHeight = value;
+
+
+    els.heightValue.textContent =
+      Math.round(value) + '%';
+
+
+    els.heightRange.value =
+      clamp(
+        Math.abs(value),
+        1,
+        300
+      );
+
+
+    renderAll();
+
+  }
+);
+
+
+/* =========================================================
+   ROTACIÓN - SLIDER
+========================================================= */
+
+els.rotateRange.addEventListener(
+  'input',
+  e => {
+
+    state.fillRotation =
+      parseFloat(e.target.value);
+
+
+    els.rotateInput.value =
+      state.fillRotation;
+
+
+    renderAll();
+
+  }
+);
+
+
+/* =========================================================
+   ROTACIÓN - INPUT MANUAL
+========================================================= */
+
+els.rotateInput.addEventListener(
+  'input',
+  e => {
+
+    let value =
+      parseFloat(e.target.value);
+
+
+    if(Number.isNaN(value))
+      return;
+
+
+    state.fillRotation =
+      value;
+
+
+    /*
+      El slider solamente llega a
+      -180 / 180, pero el input permite
+      escribir valores mayores.
+
+      Se muestra dentro del rango cuando
+      es posible.
+    */
+
+    els.rotateRange.value =
+      clamp(
+        value,
+        -180,
+        180
+      );
+
+
+    renderAll();
+
+  }
+);
+
+
+/* =========================================================
+   CENTRAR
+========================================================= */
+
+els.centerBtn.addEventListener(
+  'click',
+  () => {
+
+    state.fillX = 0;
+
+    state.fillY = 0;
+
+    renderAll();
+
+  }
+);
+
+
+/* =========================================================
+   CUBRIR
+========================================================= */
+
+els.fitBtn.addEventListener(
+  'click',
+  resetTransform
+);
+
+
+/* =========================================================
+   REINICIAR TRANSFORMACIÓN
+========================================================= */
+
+els.resetTransformBtn.addEventListener(
+  'click',
+  resetTransform
+);
+
+
+/* =========================================================
+   VOLTEAR X
+========================================================= */
+
+els.flipXBtn.addEventListener(
+  'click',
+  () => {
+
+    state.flipX =
+      !state.flipX;
+
+    syncTransformUI();
+
+    renderAll();
+
+  }
+);
+
+
+/* =========================================================
+   VOLTEAR Y
+========================================================= */
+
+els.flipYBtn.addEventListener(
+  'click',
+  () => {
+
+    state.flipY =
+      !state.flipY;
+
+    syncTransformUI();
+
+    renderAll();
+
+  }
+);
+
+
+/* =========================================================
+   MODOS
+========================================================= */
+
+document
+  .querySelectorAll('.seg')
+  .forEach(btn => {
+
+    btn.addEventListener(
+      'click',
+      () =>
+        setMode(
+          btn.dataset.mode
+        )
+    );
+
+  });
+
+
+/* =========================================================
+   DESCARGAR
+========================================================= */
+
+els.downloadBtn.addEventListener(
+  'click',
+  () => {
+
+    if(!state.alpha)
+      return;
+
+
+    const mask =
+      smoothMask(
+        state.alpha,
+        state.w,
+        state.h,
+        state.smooth
+      );
+
+
+    const canvas =
+      applyMask(
+        makeFillLayer(),
+        mask
+      );
+
+
+    const link =
+      document.createElement('a');
+
+
+    link.download =
+      'silueta-editada.png';
+
+
+    link.href =
+      canvas.toDataURL(
+        'image/png'
+      );
+
+
+    link.click();
+
+  }
+);
+
+
+/* =========================================================
+   RESTABLECER TODO
+========================================================= */
+
+els.resetBtn.addEventListener(
+  'click',
+  () => {
+
+    state.smooth = 5;
+
+    els.smoothRange.value = 5;
+    els.smoothInput.value = 5;
+    els.smoothValue.textContent = 5;
+
+
+    resetTransform();
+
+  }
+);
+
+
+/* =========================================================
+   ARRASTRAR RELLENO
+========================================================= */
+
+els.resultCanvas.addEventListener(
+  'pointerdown',
+  e => {
+
+    if(
+      state.mode !== 'image' ||
+      !state.fillImage
+    )
+      return;
+
+
+    state.dragging = true;
+
+    state.lastPointer = {
+      x:e.clientX,
+      y:e.clientY
+    };
+
+
+    els.resultCanvas.classList.add(
+      'dragging'
+    );
+
+
+    els.resultCanvas.setPointerCapture(
+      e.pointerId
+    );
+
+  }
+);
+
+
+els.resultCanvas.addEventListener(
+  'pointermove',
+  e => {
+
+    if(
+      !state.dragging ||
+      !state.lastPointer
+    )
+      return;
+
+
+    const rect =
+      els.resultCanvas.getBoundingClientRect();
+
+
+    /*
+      Convertimos el movimiento visual
+      del canvas a movimiento en píxeles
+      reales de la imagen.
+    */
+
+    const scaleX =
+      state.w / rect.width;
+
+    const scaleY =
+      state.h / rect.height;
+
+
+    const dx =
+      (e.clientX -
+       state.lastPointer.x) *
+      scaleX;
+
+
+    const dy =
+      (e.clientY -
+       state.lastPointer.y) *
+      scaleY;
+
+
+    state.fillX += dx;
+    state.fillY += dy;
+
+
+    state.lastPointer = {
+      x:e.clientX,
+      y:e.clientY
+    };
+
+
+    renderAll();
+
+  }
+);
+
+
+function stopDragging(){
+
+  state.dragging = false;
+
+  state.lastPointer = null;
+
+  els.resultCanvas.classList.remove(
+    'dragging'
+  );
+
+}
+
+
+els.resultCanvas.addEventListener(
+  'pointerup',
+  stopDragging
+);
+
+els.resultCanvas.addEventListener(
+  'pointercancel',
+  stopDragging
+);
+
+
+/* =========================================================
+   RUEDA DEL MOUSE = ZOOM
+========================================================= */
+
+els.resultCanvas.addEventListener(
+  'wheel',
+  e => {
+
+    if(
+      state.mode !== 'image' ||
+      !state.fillImage
+    )
+      return;
+
+
+    e.preventDefault();
+
+
+    const direction =
+      e.deltaY < 0
+        ? 1
+        : -1;
+
+
+    const amount =
+      direction * 5;
+
+
+    state.fillScale =
+      clamp(
+        state.fillScale + amount,
+        25,
+        300
+      );
+
+
+    syncTransformUI();
+
+    renderAll();
+
+  },
+  {passive:false}
+);
+
+
+/* =========================================================
+   COLOR HEX
+========================================================= */
+
+els.hexApply.addEventListener(
+  'click',
+  () => {
+
+    const rgb =
+      hexToRgb(
+        els.hexInput.value
+      );
+
+
+    if(!rgb)
+      return;
+
+
+    state.color =
+      rgbToHsv(...rgb);
+
+
+    drawColorWheel();
+
+    setMode('color');
+
+  }
+);
+
+
+/* =========================================================
+   INICIO
+========================================================= */
+
+drawColorWheel();
+
+syncTransformUI();
+
 })();
 </script>
+
 </body>
 </html>
