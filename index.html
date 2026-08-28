@@ -338,7 +338,7 @@ html[data-theme=night] .eyedropper-btn{
 
   <div class="panel-section">
     <div class="section-title"><span class="num">1</span><div><strong>PNG de la silueta</strong><small>Se respeta el canal alfa original.</small></div></div>
-    <label class="upload-zone" for="baseInput"><input id="baseInput" type="file" accept="image/*"><span class="upload-icon">＋</span><strong>Subir PNG / imagen</strong><small>Ideal: PNG con fondo transparente</small></label>
+    
     <div id="baseMeta" class="file-meta hidden"></div>
     <div id="opaqueWarning" class="hint hidden">La imagen no tiene transparencia. Para usarla como silueta necesitas una imagen con alfa real.</div>
   </div>
@@ -394,7 +394,7 @@ html[data-theme=night] .eyedropper-btn{
     </div>
 
     <div id="imageMode" class="mode-block hidden">
-      <label class="upload-zone" style="min-height:96px" for="fillInput"><input id="fillInput" type="file" accept="image/*" multiple><span class="upload-icon">＋</span><strong>Subir imágenes de relleno</strong><small>Puedes seleccionar tantas como quieras y editar cada una por separado</small></label>
+      
       <div id="fillLayersList" class="fill-layers-list"></div>
       <div id="fillMeta" class="file-meta hidden"></div>
       <div id="transformPanel" class="mode-block hidden">
@@ -455,7 +455,7 @@ html[data-theme=night] .eyedropper-btn{
     <div class="section-title"><span class="num">★</span><div><strong>Galería de plantillas</strong><small>Se guarda en el navegador para reutilizarla más adelante.</small></div></div>
     <div id="galleryGrid" class="gallery-grid"></div>
     <div id="galleryEmpty" class="gallery-empty">Todavía no tienes plantillas guardadas.</div>
-    <label class="upload-zone template-base-upload" for="templateBaseInput"><input id="templateBaseInput" type="file" accept="image/*" multiple><span class="upload-icon">＋</span><strong>Subir bases directamente aquí</strong><small>Puedes seleccionar varias imágenes · se convierten automáticamente en negro</small></label>
+    <label class="upload-zone template-base-upload" for="templateBaseInput"><span class="upload-icon">＋</span><strong>Subir bases directamente aquí</strong><small>Puedes seleccionar varias imágenes · se convierten automáticamente en negro</small></label>
   </div>
 
   <div class="panel-section">
@@ -737,20 +737,26 @@ function resetTransform(){state.fillScale=100;state.fillWidth=100;state.fillHeig
 function renderFillLayersUI(){if(!els.fillLayersList)return;els.fillLayersList.innerHTML='';els.fillMeta.classList.toggle('hidden',!state.fillLayers.length);if(!state.fillLayers.length)return;state.fillLayers.forEach((layer,i)=>{const row=document.createElement('div');row.className='fill-layer-item'+(layer.id===state.activeFillId?' selected':'');row.title='Seleccionar esta imagen';const thumb=document.createElement('img');thumb.className='fill-layer-thumb';thumb.src=layer.image.src;thumb.alt='';const name=document.createElement('span');name.className='fill-layer-name';name.textContent=layer.file?.name||`Imagen ${i+1}`;const tag=document.createElement('span');tag.className='fill-layer-tag';tag.textContent=layer.id===state.activeFillId?'SELECCIONADA':'';const rm=document.createElement('button');rm.className='fill-layer-remove';rm.type='button';rm.textContent='×';rm.title='Eliminar imagen';rm.onclick=e=>{e.stopPropagation();commit(()=>{const idx=state.fillLayers.findIndex(l=>l.id===layer.id);state.fillLayers.splice(idx,1);if(state.activeFillId===layer.id)state.activeFillId=state.fillLayers[Math.max(0,idx-1)]?.id||state.fillLayers[0]?.id||null;syncActiveFill();renderFillLayersUI();syncTransformUI();renderAll();});};row.onclick=()=>{syncActiveLayerFromState();state.activeFillId=layer.id;syncActiveFill();renderFillLayersUI();syncTransformUI();renderAll();};row.append(thumb,name,tag,rm);els.fillLayersList.appendChild(row);});}
 function setMode(mode){state.mode=mode;syncAllUI();renderAll();}
 
-els.baseInput.onchange=e=>handleBase(e.target.files[0]);els.fillInput.onchange=e=>handleFill(e.target.files);els.templateBaseInput.onchange=e=>{handleTemplateBases(e.target.files);e.target.value='';};
+if(els.baseInput)els.baseInput.onchange=e=>handleBase(e.target.files[0]);if(els.fillInput)els.fillInput.onchange=e=>handleFill(e.target.files);if(els.templateBaseInput)els.templateBaseInput.onchange=e=>{handleTemplateBases(e.target.files);e.target.value='';};
 els.smoothRange.addEventListener('pointerdown',beginGesture);els.smoothRange.addEventListener('change',endGesture);els.smoothRange.oninput=e=>{state.smooth=Number(e.target.value);els.smoothValue.textContent=state.smooth;els.smoothInput.value=state.smooth;renderAll();};
 els.smoothInput.addEventListener('focus',beginGesture);els.smoothInput.addEventListener('blur',endGesture);els.smoothInput.oninput=e=>{const v=clamp(Number(e.target.value)||0,0,500);state.smooth=v;els.smoothRange.value=v;els.smoothValue.textContent=v;renderAll();};
 document.querySelectorAll('.seg').forEach(b=>b.onclick=()=>commit(()=>setMode(b.dataset.mode)));
 
-els.scaleRange.addEventListener('pointerdown',beginGesture);els.scaleRange.addEventListener('change',endGesture);els.scaleRange.oninput=e=>{state.fillScale=Number(e.target.value);if(activeBase())syncBaseFromState();else syncActiveLayerFromState();syncTransformUI();renderBaseLayersUI();renderAll();};
-els.widthRange.addEventListener('pointerdown',beginGesture);els.widthRange.addEventListener('change',endGesture);els.widthRange.oninput=e=>{const n=Number(e.target.value);state.fillWidth=state.fillWidth<0?-n:n;if(activeBase())syncBaseFromState();else syncActiveLayerFromState();syncTransformUI();renderBaseLayersUI();renderAll();};
-els.widthInput.addEventListener('focus',beginGesture);els.widthInput.addEventListener('blur',endGesture);els.widthInput.oninput=e=>{if(e.target.value==='-')return;state.fillWidth=Number(e.target.value)||0;if(activeBase())syncBaseFromState();else syncActiveLayerFromState();syncTransformUI();renderBaseLayersUI();renderAll();};
-els.heightRange.addEventListener('pointerdown',beginGesture);els.heightRange.addEventListener('change',endGesture);els.heightRange.oninput=e=>{const n=Number(e.target.value);state.fillHeight=state.fillHeight<0?-n:n;if(activeBase())syncBaseFromState();else syncActiveLayerFromState();syncTransformUI();renderBaseLayersUI();renderAll();};
-els.heightInput.addEventListener('focus',beginGesture);els.heightInput.addEventListener('blur',endGesture);els.heightInput.oninput=e=>{if(e.target.value==='-')return;state.fillHeight=Number(e.target.value)||0;if(activeBase())syncBaseFromState();else syncActiveLayerFromState();syncTransformUI();renderBaseLayersUI();renderAll();};
-els.rotateRange.addEventListener('pointerdown',beginGesture);els.rotateRange.addEventListener('change',endGesture);els.rotateRange.oninput=e=>{state.fillRotation=Number(e.target.value);if(activeBase())syncBaseFromState();else syncActiveLayerFromState();els.rotateInput.value=state.fillRotation;renderBaseLayersUI();renderAll();};
-els.rotateInput.addEventListener('focus',beginGesture);els.rotateInput.addEventListener('blur',endGesture);els.rotateInput.oninput=e=>{state.fillRotation=Number(e.target.value)||0;if(activeBase())syncBaseFromState();else syncActiveLayerFromState();els.rotateRange.value=clamp(state.fillRotation,-180,180);renderBaseLayersUI();renderAll();};
-els.centerBtn.onclick=()=>commit(()=>{state.fillX=0;state.fillY=0;if(activeBase())syncBaseFromState();else syncActiveLayerFromState();renderBaseLayersUI();renderFillLayersUI();renderAll();});els.fitBtn.onclick=()=>commit(resetTransform);els.resetTransformBtn.onclick=()=>commit(resetTransform);
-els.flipXBtn.onclick=()=>commit(()=>{state.flipX=!state.flipX;if(activeBase())syncBaseFromState();else syncActiveLayerFromState();syncTransformUI();renderBaseLayersUI();renderFillLayersUI();renderAll();});els.flipYBtn.onclick=()=>commit(()=>{state.flipY=!state.flipY;if(activeBase())syncBaseFromState();else syncActiveLayerFromState();syncTransformUI();renderBaseLayersUI();renderFillLayersUI();renderAll();});
+/* Los controles de esta sección pertenecen al relleno cuando el modo es
+   "image". Antes comprobaban únicamente activeBase(), que existe siempre
+   después de cargar una plantilla, y por eso al añadir un relleno sus
+   cambios podían terminar modificando la base de la plantilla. */
+const editingFill = () => state.mode === 'image' && !!activeFill();
+
+els.scaleRange.addEventListener('pointerdown',beginGesture);els.scaleRange.addEventListener('change',endGesture);els.scaleRange.oninput=e=>{state.fillScale=Number(e.target.value);if(editingFill())syncActiveLayerFromState();syncTransformUI();renderFillLayersUI();renderAll();};
+els.widthRange.addEventListener('pointerdown',beginGesture);els.widthRange.addEventListener('change',endGesture);els.widthRange.oninput=e=>{const n=Number(e.target.value);state.fillWidth=state.fillWidth<0?-n:n;if(editingFill())syncActiveLayerFromState();syncTransformUI();renderFillLayersUI();renderAll();};
+els.widthInput.addEventListener('focus',beginGesture);els.widthInput.addEventListener('blur',endGesture);els.widthInput.oninput=e=>{if(e.target.value==='-')return;state.fillWidth=Number(e.target.value)||0;if(editingFill())syncActiveLayerFromState();syncTransformUI();renderFillLayersUI();renderAll();};
+els.heightRange.addEventListener('pointerdown',beginGesture);els.heightRange.addEventListener('change',endGesture);els.heightRange.oninput=e=>{const n=Number(e.target.value);state.fillHeight=state.fillHeight<0?-n:n;if(editingFill())syncActiveLayerFromState();syncTransformUI();renderFillLayersUI();renderAll();};
+els.heightInput.addEventListener('focus',beginGesture);els.heightInput.addEventListener('blur',endGesture);els.heightInput.oninput=e=>{if(e.target.value==='-')return;state.fillHeight=Number(e.target.value)||0;if(editingFill())syncActiveLayerFromState();syncTransformUI();renderFillLayersUI();renderAll();};
+els.rotateRange.addEventListener('pointerdown',beginGesture);els.rotateRange.addEventListener('change',endGesture);els.rotateRange.oninput=e=>{state.fillRotation=Number(e.target.value);if(editingFill())syncActiveLayerFromState();els.rotateInput.value=state.fillRotation;renderFillLayersUI();renderAll();};
+els.rotateInput.addEventListener('focus',beginGesture);els.rotateInput.addEventListener('blur',endGesture);els.rotateInput.oninput=e=>{state.fillRotation=Number(e.target.value)||0;if(editingFill())syncActiveLayerFromState();els.rotateRange.value=clamp(state.fillRotation,-180,180);renderFillLayersUI();renderAll();};
+els.centerBtn.onclick=()=>commit(()=>{state.fillX=0;state.fillY=0;if(editingFill())syncActiveLayerFromState();syncTransformUI();renderFillLayersUI();renderAll();});els.fitBtn.onclick=()=>commit(resetTransform);els.resetTransformBtn.onclick=()=>commit(resetTransform);
+els.flipXBtn.onclick=()=>commit(()=>{state.flipX=!state.flipX;if(editingFill())syncActiveLayerFromState();syncTransformUI();renderFillLayersUI();renderAll();});els.flipYBtn.onclick=()=>commit(()=>{state.flipY=!state.flipY;if(editingFill())syncActiveLayerFromState();syncTransformUI();renderFillLayersUI();renderAll();});
 
 
 els.baseScaleRange.addEventListener('pointerdown',beginGesture);els.baseScaleRange.addEventListener('change',endGesture);els.baseScaleRange.oninput=e=>applyBaseTransform(b=>b.scale=Number(e.target.value));
@@ -802,6 +808,17 @@ document.querySelectorAll('.control-tab').forEach(tab=>{
     const target=tab.dataset.tab;
     document.querySelectorAll('.control-tab').forEach(b=>b.classList.toggle('active',b===tab));
     document.querySelectorAll('.tab-panel').forEach(panel=>panel.classList.toggle('hidden',panel.id!==target));
+
+    /* Cambiar de pestaña es solo navegación: no cambia activeFillId,
+       activeBaseId, ni ninguna transformación. */
+    if(target==='templatesTab'){
+      syncBaseUI();
+      renderBaseLayersUI();
+    }else if(target==='editingTab'){
+      syncActiveFill();
+      syncTransformUI();
+      renderFillLayersUI();
+    }
   });
 });
 
