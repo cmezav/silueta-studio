@@ -85,6 +85,62 @@ button{cursor:pointer}
 @media(max-width:680px){
   .tab-nav{gap:3px}.control-tab{min-height:36px;padding:8px 5px;font-size:10px}.topbar{padding:0 14px}.privacy{display:none}.workspace{padding:20px 12px 30px}.hero h1{font-size:25px}.color-layout{grid-template-columns:1fr}.canvas-wrap{grid-template-columns:1fr}.preview-card.result-card{grid-column:auto}.gallery-grid{grid-template-columns:repeat(3,1fr)}.independent-size{grid-template-columns:1fr}.history-actions{display:none}}
 </style>
+
+<style id="remove-bg-btn-style">
+.remove-bg-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  min-height:44px;
+  padding:0 18px;
+  border:1px solid #6d28d9;
+  border-radius:11px;
+  background:linear-gradient(180deg,#8b5cf6 0%,#6d28d9 52%,#5b21b6 100%);
+  color:#fff;
+  font-family:inherit;
+  font-size:15px;
+  font-weight:800;
+  line-height:1;
+  letter-spacing:.1px;
+  text-decoration:none;
+  text-shadow:0 1px 1px rgba(0,0,0,.28);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.38),
+    inset 0 -2px 0 rgba(45,16,91,.28),
+    0 3px 0 #4c1d95,
+    0 6px 13px rgba(76,29,149,.24);
+  transition:transform .12s ease,box-shadow .12s ease,filter .12s ease;
+  white-space:nowrap;
+}
+.remove-bg-btn::after{
+  content:"↗";
+  width:auto;
+  height:auto;
+  border:0;
+  transform:none;
+  font-size:15px;
+  line-height:1;
+  font-weight:900;
+}
+.remove-bg-btn:hover{
+  filter:brightness(1.06);
+  transform:translateY(-1px);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.42),
+    inset 0 -2px 0 rgba(45,16,91,.28),
+    0 4px 0 #4c1d95,
+    0 8px 17px rgba(76,29,149,.30);
+}
+.remove-bg-btn:active{
+  transform:translateY(2px);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.25),
+    0 1px 0 #4c1d95,
+    0 3px 7px rgba(76,29,149,.20);
+}
+</style>
+
 </head>
 <body>
 <header class="topbar">
@@ -107,7 +163,7 @@ button{cursor:pointer}
       <button id="undoBtn" class="icon-btn" title="Deshacer (Ctrl+Z)" disabled>↶</button>
       <button id="redoBtn" class="icon-btn" title="Rehacer (Ctrl+Shift+Z)" disabled>↷</button>
     </div>
-    <a id="removeBgBtn" class="remove-bg-btn" href="https://www.remove.bg/es" target="_blank" rel="noopener noreferrer">Quitafondos ↗</a>
+    <a id="removeBgBtn" class="remove-bg-btn" href="https://www.remove.bg/es" target="_blank" rel="noopener noreferrer">Quitafondos</a>
     <button id="saveTemplateBtn" class="btn ghost" disabled>＋ Guardar plantilla</button>
     <button id="downloadBtn" class="btn primary" disabled>Descargar PNG</button>
   </div>
