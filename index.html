@@ -482,7 +482,7 @@ button,input{
 .drag-tip{
   margin-top:9px;
   background:#f8f6ff;
-  border-radius:9px;
+  border-radius:99px;
   padding:9px;
   font-size:10px;
   color:#756d82;
@@ -1687,6 +1687,30 @@ const els = {
   swatches:$('swatches')
 
 };
+
+
+/* =========================================================
+   GENERADOR DE NOMBRES UNICOS (C-V-C-V-C-V-C-V) O(1)
+========================================================= */
+
+const CONSONANTS = ['B','C','D','F','G','H','J','K','L','M','N','P','Q','R','S','5','T','7','V','W','X','Y','Z'];
+const VOCALS = ['A','4','E','3','U','Y'];
+const C_LEN = CONSONANTS.length;
+const V_LEN = VOCALS.length;
+
+function generateFastPNGName() {
+  const code = 
+    CONSONANTS[(Math.random() * C_LEN) | 0] +
+    VOCALS[(Math.random() * V_LEN) | 0] +
+    CONSONANTS[(Math.random() * C_LEN) | 0] +
+    VOCALS[(Math.random() * V_LEN) | 0] +
+    CONSONANTS[(Math.random() * C_LEN) | 0] +
+    VOCALS[(Math.random() * V_LEN) | 0] +
+    CONSONANTS[(Math.random() * C_LEN) | 0] +
+    VOCALS[(Math.random() * V_LEN) | 0];
+
+  return `EDIT-${code}.png`;
+}
 
 
 /* =========================================================
@@ -3736,7 +3760,7 @@ document
 
 
 /* =========================================================
-   DESCARGAR
+   DESCARGAR CON NOMBRE ÚNICO INFALIBLE (.PNG)
 ========================================================= */
 
 els.downloadBtn.addEventListener(
@@ -3767,8 +3791,9 @@ els.downloadBtn.addEventListener(
       document.createElement('a');
 
 
+    // Generación instantánea O(1) con nombre único y memorable
     link.download =
-      'silueta-editada.png';
+      generateFastPNGName();
 
 
     link.href =
