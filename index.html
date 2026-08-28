@@ -179,6 +179,111 @@ html[data-theme=night] .spinner{border-color:#342b43;border-top-color:#a78bfa}
 html[data-theme=night] .theme-fab{background:linear-gradient(145deg,#302344,#18131f);border-color:#7c5aa8;box-shadow:0 10px 30px rgba(0,0,0,.55),0 0 0 1px rgba(167,139,250,.08),inset 0 1px 0 rgba(255,255,255,.1)}
 @media(max-width:680px){.theme-fab{width:52px;height:52px;right:16px;bottom:16px;font-size:23px}}
 @media(prefers-reduced-motion:reduce){html,body,body *, .theme-fab,.theme-fab .theme-icon{transition:none!important;animation:none!important}}
+
+/* ===== MODO NOCHE: CONTRASTE COMPLETO ===== */
+html[data-theme=night]{
+  --bg:#08070b;
+  --surface:#17151e;
+  --surface-2:#211e29;
+  --surface-3:#121018;
+  --surface-hover:#2b2338;
+  --text:#f4f1ff;
+  --text-2:#d0cad9;
+  --text-muted:#aaa5b9;
+  --border:#383341;
+  --border-strong:#4a4355;
+  color-scheme:dark;
+}
+html[data-theme=night] body{background:var(--bg);color:var(--text)}
+html[data-theme=night] .topbar,
+html[data-theme=night] .panel,
+html[data-theme=night] .preview-stage,
+html[data-theme=night] .preview-label,
+html[data-theme=night] .gallery-card,
+html[data-theme=night] .layer-item,
+html[data-theme=night] .history-word,
+html[data-theme=night] .fill-layer-item{background:var(--surface);color:var(--text);border-color:var(--border)}
+html[data-theme=night] .topbar{box-shadow:0 4px 20px rgba(0,0,0,.35)}
+html[data-theme=night] .preview-area{background:#0d0c11}
+html[data-theme=night] .upload-zone,
+html[data-theme=night] .hint,
+html[data-theme=night] .color-editor,
+html[data-theme=night] .gradient-editor,
+html[data-theme=night] .effect-box,
+html[data-theme=night] .search-panel,
+html[data-theme=night] .gallery-empty{background:var(--surface-3);color:var(--text-2);border-color:var(--border)}
+html[data-theme=night] .file-meta,
+html[data-theme=night] .segmented,
+html[data-theme=night] .color-fill-tabs,
+html[data-theme=night] .tab-nav{background:var(--surface-2);border-color:var(--border)}
+html[data-theme=night] .seg,
+html[data-theme=night] .color-fill-tab,
+html[data-theme=night] .control-tab{color:var(--text-muted)}
+html[data-theme=night] .seg.active,
+html[data-theme=night] .color-fill-tab.active,
+html[data-theme=night] .control-tab.active{background:#30283e;color:#c4b5fd}
+html[data-theme=night] .control-tab:hover,
+html[data-theme=night] .icon-btn:hover:not(:disabled),
+html[data-theme=night] .mini-btn:hover:not(:disabled),
+html[data-theme=night] .eyedropper-btn:hover{background:var(--surface-hover);color:#c4b5fd;border-color:#7254a8}
+html[data-theme=night] .icon-btn,
+html[data-theme=night] .btn.ghost,
+html[data-theme=night] .mini-btn,
+html[data-theme=night] .hex-apply,
+html[data-theme=night] .search-input,
+html[data-theme=night] .hex-input,
+html[data-theme=night] .eyedropper-btn{
+  background:var(--surface-2);
+  color:#eeeaf6;
+  border-color:var(--border-strong);
+}
+html[data-theme=night] .manual input,
+html[data-theme=night] .search-input,
+html[data-theme=night] .hex-input{
+  background:#100e15;color:var(--text);border-color:var(--border-strong);
+}
+html[data-theme=night] input[type="color"]{background:var(--surface-2);border-color:var(--border-strong)}
+html[data-theme=night] .color-mini{background:var(--surface-2);border-color:var(--border-strong)}
+html[data-theme=night] .layer-grid label,
+html[data-theme=night] .manual label,
+html[data-theme=night] .rotation-title,
+html[data-theme=night] .effect-row-title,
+html[data-theme=night] .effect-toggle label{color:#b8b2c4}
+html[data-theme=night] .history-word-text{color:var(--text-2)}
+html[data-theme=night] .gallery-card span,
+html[data-theme=night] .preview-footer,
+html[data-theme=night] .preview-head span,
+html[data-theme=night] .range-row,
+html[data-theme=night] .range-labels,
+html[data-theme=night] .mini-label,
+html[data-theme=night] .search-hint,
+html[data-theme=night] .empty-state,
+html[data-theme=night] .section-title small,
+html[data-theme=night] .upload-zone small{color:var(--text-muted)}
+html[data-theme=night] .preview-head,
+html[data-theme=night] .preview-footer,
+html[data-theme=night] .panel-section{border-color:var(--border)}
+html[data-theme=night] .preview-label{color:#c3bdcc}
+html[data-theme=night] .preview-label.after,
+html[data-theme=night] .drag-status,
+html[data-theme=night] .history-word.favorite,
+html[data-theme=night] .fill-layer-item.selected,
+html[data-theme=night] .fill-layer-item:hover{background:#261e33;color:#c4b5fd;border-color:#584275}
+html[data-theme=night] .gallery-remove{background:var(--surface-2);color:#d8d2e2;border-color:var(--border)}
+html[data-theme=night] .fill-layer-thumb,
+html[data-theme=night] .gallery-card img{background:#0c0b10}
+html[data-theme=night] .empty-icon{background:var(--surface-2);color:#c4b5fd}
+html[data-theme=night] .loading{color:var(--text-muted)}
+html[data-theme=night] .loading strong{color:#eeeaf6}
+html[data-theme=night] .spinner{border-color:#342b43;border-top-color:#a78bfa}
+html[data-theme=night] .theme-fab{
+  background:linear-gradient(145deg,#302344,#18131f);
+  border-color:#7c5aa8;
+  box-shadow:0 10px 30px rgba(0,0,0,.55),0 0 0 1px rgba(167,139,250,.08),inset 0 1px 0 rgba(255,255,255,.1);
+}
+html[data-theme=night] .eyedropper-btn{
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.04),0 1px 3px rgba(0,0,0,.3);
+}
 </style>
 
 </head>
@@ -239,7 +344,7 @@ html[data-theme=night] .theme-fab{background:linear-gradient(145deg,#302344,#181
   </div>
 
   <div class="panel-section">
-    <div class="section-title"><span class="num">2</span><div><strong>Redondear / regularizar contorno</strong><small>Simplifica la máscara y vuelve a dejar el borde nítido.</small></div></div>
+    <div class="section-title"><span class="num">2</span><div><strong>Redondear / regularizar contorno</strong><small>No es blur: simplifica la máscara y vuelve a dejar el borde nítido.</small></div></div>
     <div class="range-row"><span>0</span><input id="smoothRange" type="range" min="0" max="500" value="5"><span id="smoothValue" class="range-value">5</span></div>
     <div class="range-labels"><span>Original</span><span>Redondeado fuerte</span></div>
     <div class="manual"><label for="smoothInput">Suavizado manual</label><input id="smoothInput" type="number" min="0" max="500" value="5"></div>
